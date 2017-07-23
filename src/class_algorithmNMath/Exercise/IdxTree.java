@@ -1,4 +1,4 @@
-package exercise;
+package class_algorithmNMath.Exercise;
 
 
 import java.io.BufferedReader;

@@ -1,4 +1,4 @@
-package exercise;
+package class_algorithmNMath.Exercise;
 
 public class Dijkstra {
 	//http://yeop9657.blog.me/220898904974
