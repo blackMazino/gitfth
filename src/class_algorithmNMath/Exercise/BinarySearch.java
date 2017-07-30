@@ -12,6 +12,7 @@ public class BinarySearch {
 		for(int i=1;i<=N;i++) A[i] = sc.nextInt();
 		int target = getTByBS(N,M,A);
 		System.out.println("answer : "+target);
+		sc.close();
 	}
 
 	//N개의 배열의 M번째 가운데수

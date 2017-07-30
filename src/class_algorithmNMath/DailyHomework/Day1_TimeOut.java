@@ -43,6 +43,7 @@ public class Day1_TimeOut {
 				System.out.println("TLE!");
 			}	
 		}
+		sc.close();
 	}
 	private static boolean isPass(String S,int N, int T,int L) {
 		boolean result = false;

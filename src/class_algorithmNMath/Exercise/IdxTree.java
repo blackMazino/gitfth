@@ -59,6 +59,7 @@ public class IdxTree {
 			
 			System.out.println(sum);
 		}
+		sc.close();
 	}
 
 	private static void printThisTree(int[] tree) {

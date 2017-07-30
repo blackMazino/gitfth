@@ -1,6 +1,6 @@
 package referenceBook;
 
-public class Lis {
+public class dpLis {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
