@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 
 public class BinarySearch {
 
- //N은 리스트 크기, M은 질문 수
+ //N
 
 	static int N,M,arr[];
 	
