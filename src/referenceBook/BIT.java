@@ -1,11 +1,11 @@
+package referenceBook;
+
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class DefaultCode {
-	
+public class BIT {
+
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 //		System.setIn(new FileInputStream("sample.txt"));
@@ -18,4 +18,5 @@ public class DefaultCode {
 			int z = Integer.parseInt(st.nextToken());
 		}
 	}
+
 }

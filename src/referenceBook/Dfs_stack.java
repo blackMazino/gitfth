@@ -19,7 +19,7 @@ public class Dfs_stack {
 	//int[] - [0] : curr vertex info, [1]:AdjList vertex order	
 	static LinkedList<int[]>S = new LinkedList<>();	
 	
-	public static void main(String[] args) throws NumberFormatException, IOException {
+	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st ;
 		int TC = Integer.parseInt(br.readLine());

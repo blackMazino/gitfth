@@ -15,7 +15,7 @@ public class Dfs {
 	//check if the vertex is visited
 	static boolean visited[] = new boolean[M_size];
 	
-	public static void main(String[] args) throws NumberFormatException, IOException {
+	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st ;
 		int TC = Integer.parseInt(br.readLine());
