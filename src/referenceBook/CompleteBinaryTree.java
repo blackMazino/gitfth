@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class CompleteBinaryTree {
-	/* 1Â÷¿ø ¹è¿­·Î Ç¥Çö°¡´É
+	/* 1ì°¨ì› ë°°ì—´ë¡œ í‘œí˜„ê°€ëŠ¥
 	 * Parent(x) = x/2;
 	 * left_child(x) = x*2;
 	 * right_child(x) = 2*x+1;
