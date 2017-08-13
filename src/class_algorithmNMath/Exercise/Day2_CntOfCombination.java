@@ -6,16 +6,16 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Day2_CntOfCombination {
-/*¹®Á¦ 2004
-nCmÀÇ ³¡ÀÚ¸® 0ÀÇ °³¼ö¸¦ Ãâ·ÂÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ½Ã¿À.
+/*ë¬¸ì œ 2004
+nCmì˜ ëìë¦¬ 0ì˜ ê°œìˆ˜ë¥¼ ì¶œë ¥í•˜ëŠ” í”„ë¡œê·¸ë¨ì„ ì‘ì„±í•˜ì‹œì˜¤.
 
-ÀÔ·Â
-Ã¹Â° ÁÙ¿¡ Á¤¼ö n, m(0¡Âm¡Ân¡Â2,000,000,000, n!=0)ÀÌ µé¾î¿Â´Ù.
+ì…ë ¥
+ì²«ì§¸ ì¤„ì— ì •ìˆ˜ n, m(0â‰¤mâ‰¤nâ‰¤2,000,000,000, n!=0)ì´ ë“¤ì–´ì˜¨ë‹¤.
 
-Ãâ·Â
-Ã¹Â° ÁÙ¿¡ 0ÀÇ °³¼ö¸¦ Ãâ·ÂÇÑ´Ù.
+ì¶œë ¥
+ì²«ì§¸ ì¤„ì— 0ì˜ ê°œìˆ˜ë¥¼ ì¶œë ¥í•œë‹¤.
 
-2¿Í  5ÀÇ ÀÎÀÚ¼ö  Áß ÀÛÀº¼ö¸¦ Ã£´Â´Ù
+2ì™€  5ì˜ ì¸ììˆ˜  ì¤‘ ì‘ì€ìˆ˜ë¥¼ ì°¾ëŠ”ë‹¤
  * 
  * */
 	
@@ -30,7 +30,7 @@ nCmÀÇ ³¡ÀÚ¸® 0ÀÇ °³¼ö¸¦ Ãâ·ÂÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ½Ã¿À.
 			int M = Integer.parseInt(st.nextToken());
 			
 			//nCm = n! / ((n-m)! * m!)
-			//n!ÀÇ 2(5)ÀÇÁö¼ö¸¦ Ã£¾Æ¼­ (n-m)!, m!¸¦ Ã£¾Æ¼­ »«´Ù
+			//n!ì˜ 2(5)ì˜ì§€ìˆ˜ë¥¼ ì°¾ì•„ì„œ (n-m)!, m!ë¥¼ ì°¾ì•„ì„œ ëº€ë‹¤
 //			int cal2 = findTrailingZeros(N, 2) - findTrailingZeros(N-M, 2) - findTrailingZeros(M, 2); 
 //			int cal5 = findTrailingZeros(N, 5) - findTrailingZeros(N-M, 5) - findTrailingZeros(M, 5);
 			int cal2 = cntZeros(N, 2) - cntZeros(N-M, 2) - cntZeros(M, 2); 

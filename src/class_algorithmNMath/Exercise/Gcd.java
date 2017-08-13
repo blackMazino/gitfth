@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 //https://gist.github.com/seungdols/245275d1bca9fb02db16
 public class Gcd {
-	/* À¯Å¬¸®µå È£Á¦¹ıÀ¸·Î gcd±¸ÇÏ±â
+	/* ìœ í´ë¦¬ë“œ í˜¸ì œë²•ìœ¼ë¡œ gcdêµ¬í•˜ê¸°
 	 * a1   b1   r1(=a1%b1)
 	 * b1   r1   r2
 	 * r1   r2   r3
@@ -29,7 +29,7 @@ public class Gcd {
 
 	//ax+by = 1
 	private static int expandedEuclidGcd(int a, int b) {
-		//a, b¸¦ ¼­·Î¼Ò·Î ¸¸µå´Â°Ô ¿ì¼±, ¼­·Î¼Ò¶ó°í °¡Á¤ÇÏ°í ÁøÇà		
+		//a, bë¥¼ ì„œë¡œì†Œë¡œ ë§Œë“œëŠ”ê²Œ ìš°ì„ , ì„œë¡œì†Œë¼ê³  ê°€ì •í•˜ê³  ì§„í–‰		
 		int[]s = new int [3];
 		int[]t = new int [3];
 		int[]r = new int [3];
@@ -47,7 +47,7 @@ public class Gcd {
 			
 			if(r[2] == gcd(a,b)) break;
 			
-			//ÇÑÄ­¾¿ ³»¸°
+			//í•œì¹¸ì”© ë‚´ë¦°
 			r[0]=r[1]; r[1]=r[2];
 			s[0]=s[1]; s[1]=s[2];
 			t[0]=t[1]; t[1]=t[2];

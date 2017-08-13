@@ -7,22 +7,22 @@ import java.util.StringTokenizer;
 
 public class Day4_EratosthenesSieve {
 /*	
-	¹®Á¦ 2960
-	¿¡¶óÅä½ºÅ×³×½ºÀÇ Ã¼´Â Nº¸´Ù ÀÛ°Å³ª °°Àº ¸ðµç ¼Ò¼ö¸¦ Ã£´Â À¯¸íÇÑ ¾Ë°í¸®ÁòÀÌ´Ù.
+	ë¬¸ì œ 2960
+	ì—ë¼í† ìŠ¤í…Œë„¤ìŠ¤ì˜ ì²´ëŠ” Në³´ë‹¤ ìž‘ê±°ë‚˜ ê°™ì€ ëª¨ë“  ì†Œìˆ˜ë¥¼ ì°¾ëŠ” ìœ ëª…í•œ ì•Œê³ ë¦¬ì¦˜ì´ë‹¤.
 
-	ÀÌ ¾Ë°í¸®ÁòÀº ´ÙÀ½°ú °°´Ù.
+	ì´ ì•Œê³ ë¦¬ì¦˜ì€ ë‹¤ìŒê³¼ ê°™ë‹¤.
 
-	2ºÎÅÍ N±îÁö ¸ðµç Á¤¼ö¸¦ Àû´Â´Ù.
-	¾ÆÁ÷ Áö¿ìÁö ¾ÊÀº ¼ýÀÚ Áß °¡Àå ÀÛÀº ¼ö¸¦ Ã£´Â´Ù. ÀÌ°ÍÀ» P¶ó°í ÇÑ°í, ÀÌ ¼ö´Â ¼Ò¼öÀÌ´Ù.
-	P¸¦ Áö¿ì°í, ¾ÆÁ÷ Áö¿ìÁö ¾ÊÀº PÀÇ ¹è¼ö¸¦ Å©±â ¼ø¼­´ë·Î Áö¿î´Ù.
-	¾ÆÁ÷ ¸ðµç ¼ýÀÚ¸¦ Áö¿ìÁö ¾Ê¾Ò´Ù¸é, ´Ù½Ã 2¹ø ´Ü°è·Î °£´Ù.
-	N, K°¡ ÁÖ¾îÁ³À» ¶§, K¹øÂ° Áö¿ì´Â ¼ö¸¦ ±¸ÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ½Ã¿À.
+	2ë¶€í„° Nê¹Œì§€ ëª¨ë“  ì •ìˆ˜ë¥¼ ì ëŠ”ë‹¤.
+	ì•„ì§ ì§€ìš°ì§€ ì•Šì€ ìˆ«ìž ì¤‘ ê°€ìž¥ ìž‘ì€ ìˆ˜ë¥¼ ì°¾ëŠ”ë‹¤. ì´ê²ƒì„ Pë¼ê³  í•œê³ , ì´ ìˆ˜ëŠ” ì†Œìˆ˜ì´ë‹¤.
+	Pë¥¼ ì§€ìš°ê³ , ì•„ì§ ì§€ìš°ì§€ ì•Šì€ Pì˜ ë°°ìˆ˜ë¥¼ í¬ê¸° ìˆœì„œëŒ€ë¡œ ì§€ìš´ë‹¤.
+	ì•„ì§ ëª¨ë“  ìˆ«ìžë¥¼ ì§€ìš°ì§€ ì•Šì•˜ë‹¤ë©´, ë‹¤ì‹œ 2ë²ˆ ë‹¨ê³„ë¡œ ê°„ë‹¤.
+	N, Kê°€ ì£¼ì–´ì¡Œì„ ë•Œ, Kë²ˆì§¸ ì§€ìš°ëŠ” ìˆ˜ë¥¼ êµ¬í•˜ëŠ” í”„ë¡œê·¸ëž¨ì„ ìž‘ì„±í•˜ì‹œì˜¤.
 
-	ÀÔ·Â
-	Ã¹Â° ÁÙ¿¡ N°ú K°¡ ÁÖ¾îÁø´Ù. (2 ¡Â K < N ¡Â 1000)
+	ìž…ë ¥
+	ì²«ì§¸ ì¤„ì— Nê³¼ Kê°€ ì£¼ì–´ì§„ë‹¤. (2 â‰¤ K < N â‰¤ 1000)
 
-	Ãâ·Â
-	Ã¹Â° ÁÙ¿¡ K¹øÂ° Áö¿öÁø ¼ö¸¦ Ãâ·ÂÇÑ´Ù.
+	ì¶œë ¥
+	ì²«ì§¸ ì¤„ì— Kë²ˆì§¸ ì§€ì›Œì§„ ìˆ˜ë¥¼ ì¶œë ¥í•œë‹¤.
 */	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

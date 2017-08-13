@@ -15,7 +15,7 @@ public class BinarySearch {
 		sc.close();
 	}
 
-	//N°³ÀÇ ¹è¿­ÀÇ M¹øÂ° °¡¿îµ¥¼ö
+	//Nê°œì˜ ë°°ì—´ì˜ Më²ˆì§¸ ê°€ìš´ë°ìˆ˜
 	private static int getTByBS(int N, int M, int [] A) {
 		int low=1, high=N, mid=0;		
 		int ans = 1;
@@ -28,7 +28,7 @@ public class BinarySearch {
 			}
 			System.out.println(ans);
 		}
-		 return ans;//¸ñÃ£À½
+		 return ans;//ëª©ì°¾ìŒ
 	}
 /*
 int low = 1, high = N, mid;
@@ -46,6 +46,6 @@ while (low <= high)
     //else break;
 }
 if (low <= high) mid;
-else //¸øÃ£À½
+else //ëª»ì°¾ìŒ
 */
 }

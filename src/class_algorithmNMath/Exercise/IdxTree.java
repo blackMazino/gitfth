@@ -31,7 +31,7 @@ public class IdxTree {
 						Integer.parseInt(st.nextToken());
 			}
 			//fill full idx tree
-			for(int a=N-1;a>0;a--){//µÚ¿¡¼­(¾Æ·¡¼­)ºÎÅÍ Ã¤¿î´Ù
+			for(int a=N-1;a>0;a--){//ë’¤ì—ì„œ(ì•„ë˜ì„œ)ë¶€í„° ì±„ìš´ë‹¤
 				tree[a] = tree[2*a]+tree[2*a+1];
 			}
 			printThisTree(tree);
@@ -53,8 +53,8 @@ public class IdxTree {
 					Integer.parseInt(st.nextToken());//search right point
 			int sum = 0;
 			for(sum=0, l+=N, r+=N; l<=r ; l=(l+1)/2,r=(r-1)/2){
-				if(l%2==1) sum+=tree[l]; //¿ŞÂÊÀº È¦¼öÀÏ¶§¸¸ ´õÇØÁØ´Ù
-				if(r%2==0) sum+=tree[r]; //¿À¸¥ÂÊÀº Â¦¼öÀÏ¶§¸¸ ´õÇÑ´Ù
+				if(l%2==1) sum+=tree[l]; //ì™¼ìª½ì€ í™€ìˆ˜ì¼ë•Œë§Œ ë”í•´ì¤€ë‹¤
+				if(r%2==0) sum+=tree[r]; //ì˜¤ë¥¸ìª½ì€ ì§ìˆ˜ì¼ë•Œë§Œ ë”í•œë‹¤
 			}
 			
 			System.out.println(sum);
@@ -88,7 +88,7 @@ for(int i=S;i>0;i--) tree[i] = tree[2*i]+tree[2*i+1];
 */
 
 /*
-index tree(´ëÇ¥°ªMAX)
+index tree(ëŒ€í‘œê°’MAX)
  update(int n, int v)
 {
     n+=S;

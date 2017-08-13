@@ -8,20 +8,20 @@ import java.util.StringTokenizer;
 
 public class Day3_GreatestSqure {
 /*
-¹®Á¦
-n¡¿mÀÇ 0, 1·Î µÈ ¹è¿­ÀÌ ÀÖ´Ù. ÀÌ ¹è¿­¿¡¼­ 1·Î µÈ °¡Àå Å« Á¤»ç°¢ÇüÀÇ Å©±â¸¦ ±¸ÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ½Ã¿À.
+ë¬¸ì œ
+nÃ—mì˜ 0, 1ë¡œ ëœ ë°°ì—´ì´ ìžˆë‹¤. ì´ ë°°ì—´ì—ì„œ 1ë¡œ ëœ ê°€ìž¥ í° ì •ì‚¬ê°í˜•ì˜ í¬ê¸°ë¥¼ êµ¬í•˜ëŠ” í”„ë¡œê·¸ëž¨ì„ ìž‘ì„±í•˜ì‹œì˜¤.
 
 0	1	0	0
 0	1	1	1
 1	1	1	0
 0	0	1	0
-À§¿Í °°Àº ¿¹Á¦¿¡¼­´Â °¡¿îµ¥ÀÇ 2¡¿2 ¹è¿­ÀÌ °¡Àå Å« Á¤»ç°¢ÇüÀÌ´Ù. 
+ìœ„ì™€ ê°™ì€ ì˜ˆì œì—ì„œëŠ” ê°€ìš´ë°ì˜ 2Ã—2 ë°°ì—´ì´ ê°€ìž¥ í° ì •ì‚¬ê°í˜•ì´ë‹¤. 
 
-ÀÔ·Â
-Ã¹Â° ÁÙ¿¡ n, m(1 ¡Â n, m ¡Â 1,000)ÀÌ ÁÖ¾îÁø´Ù. ´ÙÀ½ n°³ÀÇ ÁÙ¿¡´Â m°³ÀÇ ¼ýÀÚ·Î ¹è¿­ÀÌ ÁÖ¾îÁø´Ù.
+ìž…ë ¥
+ì²«ì§¸ ì¤„ì— n, m(1 â‰¤ n, m â‰¤ 1,000)ì´ ì£¼ì–´ì§„ë‹¤. ë‹¤ìŒ nê°œì˜ ì¤„ì—ëŠ” mê°œì˜ ìˆ«ìžë¡œ ë°°ì—´ì´ ì£¼ì–´ì§„ë‹¤.
 
-Ãâ·Â
-Ã¹Â° ÁÙ¿¡ °¡Àå Å« Á¤»ç°¢ÇüÀÇ ³ÐÀÌ¸¦ Ãâ·ÂÇÑ´Ù.
+ì¶œë ¥
+ì²«ì§¸ ì¤„ì— ê°€ìž¥ í° ì •ì‚¬ê°í˜•ì˜ ë„“ì´ë¥¼ ì¶œë ¥í•œë‹¤.
  **/
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -49,7 +49,7 @@ n¡¿mÀÇ 0, 1·Î µÈ ¹è¿­ÀÌ ÀÖ´Ù. ÀÌ ¹è¿­¿¡¼­ 1·Î µÈ °¡Àå Å« Á¤»ç°¢ÇüÀÇ Å©±â¸¦ ±¸ÇÏ´
 	}
 
 	private static int getLengthByDP(int[][] array, int n, int m) {
-		int d[][] = new int [n+1][m+1];//i,j°¡ ¿ìÃøÇÏ´Ü¿¡ À§Ä¡ÇÏ´Â Á¤»ç°¢ÇüÀÇ º¯ÀÇ ±æÀÌ
+		int d[][] = new int [n+1][m+1];//i,jê°€ ìš°ì¸¡í•˜ë‹¨ì— ìœ„ì¹˜í•˜ëŠ” ì •ì‚¬ê°í˜•ì˜ ë³€ì˜ ê¸¸ì´
 		int lengthSize = 0;
 		for(int i=1;i<=n;i++){				
 			for(int j=1; j<=m;j++){
@@ -58,8 +58,8 @@ n¡¿mÀÇ 0, 1·Î µÈ ¹è¿­ÀÌ ÀÖ´Ù. ÀÌ ¹è¿­¿¡¼­ 1·Î µÈ °¡Àå Å« Á¤»ç°¢ÇüÀÇ Å©±â¸¦ ±¸ÇÏ´
 					d[i][j] = 0;
 				}else{
 					int w = Math.min(d[i][j-1], d[i-1][j]);
-					//¿ÞÂÊÀÇ D °ª(i,j-1)°ú À§ÂÊÀÇ D°ª Áß ÀÛÀº °ÍÀ» Ã£°í, ±×°ªÀ» Â÷ÀÌ w¿¡ ¹Þ´Â´Ù.
-					//µÑÁßÀÇ ÇÏ³ª°¡ 0ÀÌ¸é ±æÀÌ´Â ¹«Á¶°Ç 1			
+					//ì™¼ìª½ì˜ D ê°’(i,j-1)ê³¼ ìœ„ìª½ì˜ Dê°’ ì¤‘ ìž‘ì€ ê²ƒì„ ì°¾ê³ , ê·¸ê°’ì„ ì°¨ì´ wì— ë°›ëŠ”ë‹¤.
+					//ë‘˜ì¤‘ì˜ í•˜ë‚˜ê°€ 0ì´ë©´ ê¸¸ì´ëŠ” ë¬´ì¡°ê±´ 1			
 					d[i][j] = d[i][j-1]==0||d[i-1][j]==0 ? 1 : w+1;
 					if(d[i-w][j-w]==0){
 						d[i][j] = w;
