@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-public class Dfs_stack {
+public class Graph_01Dfs_stack {
 	static int M_size = 100; //Max No. of vertices
 	
 	//adjacent List
@@ -22,9 +22,10 @@ public class Dfs_stack {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st ;
-		int TC = Integer.parseInt(br.readLine());
+		st = new StringTokenizer(br.readLine());
 		
-		for(int tc=1; tc<TC;tc++){
+		int TC = Integer.parseInt(st.nextToken());		
+		for(int tc=1; tc<=TC;tc++){
 			
 		}
 

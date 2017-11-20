@@ -7,12 +7,12 @@ import java.util.StringTokenizer;
 
 public class ParametricSearch {
 
-	public static void main(String[] args) throws NumberFormatException, IOException {
+	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st ;
-		int TC = Integer.parseInt(br.readLine());
-		
-		for(int tc=1; tc<TC;tc++){
+		st = new StringTokenizer(br.readLine());
+		int TC = Integer.parseInt(st.nextToken());
+		for(int tc=1; tc<=TC;tc++){
 			
 		}
 	}

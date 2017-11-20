@@ -10,11 +10,10 @@ public class DefaultCode {
 		// TODO Auto-generated method stub
 //		System.setIn(new FileInputStream("sample.txt"));
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st ;
-		int TC = Integer.parseInt(br.readLine());
+		StringTokenizer st ;		
 		st = new StringTokenizer(br.readLine());
-		
-		for(int tc=1; tc<TC;tc++){
+		int TC = Integer.parseInt(st.nextToken());
+		for(int tc=1; tc<=TC;tc++){
 			int z = Integer.parseInt(st.nextToken());
 		}
 	}

@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-public class Tree {
+public class DS_02Tree {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
@@ -17,7 +17,7 @@ public class Tree {
 		StringTokenizer st ;
 		int TC = Integer.parseInt(br.readLine());
 		
-		for(int tc=1; tc<TC;tc++){
+		for(int tc=1; tc<=TC;tc++){
 			
 		}
 		

@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class Dfs {
+public class Graph_01Dfs {
 	/**/
 	static int M_size = 100; //Max No. of vertices
 	
@@ -20,7 +20,7 @@ public class Dfs {
 		StringTokenizer st ;
 		int TC = Integer.parseInt(br.readLine());
 		
-		for(int tc=1; tc<TC;tc++){
+		for(int tc=1; tc<=TC;tc++){
 			
 		}
 	}
