@@ -57,6 +57,11 @@ public class Q1712_4points {
 
 	private static boolean isOneLineInvolve() {
 		boolean result = false;
+		System.out.println("===================================");
+		System.out.println(Math.abs(getDotProduct(a,b)) + "|" + (int)(getVSize(a) * getVSize(b)));
+		System.out.println(Math.abs(getDotProduct(b,c)) + "|" + (int)(getVSize(b) * getVSize(c)));
+		System.out.println(Math.abs(getDotProduct(c,a)) + "|" + (int)(getVSize(c) * getVSize(a)));
+		
 		if(Math.abs(getDotProduct(a,b)) == (getVSize(a) * getVSize(b))
 		&& Math.abs(getDotProduct(b,c)) == (getVSize(b) * getVSize(c))
 		&& Math.abs(getDotProduct(c,a)) == (getVSize(c) * getVSize(a))){
@@ -66,7 +71,8 @@ public class Q1712_4points {
 	}
 
 	private static double getVSize(int[] x) {		
-		return Math.sqrt(Math.pow(x[1], 2) + Math.pow(x[2], 2) + Math.pow(x[2], 2));
+		
+		return Math.sqrt(Math.pow(x[1], 2) + Math.pow(x[2], 2) + Math.pow(x[3], 2));
 	}
 
 	/* a = a1,a2,a3
@@ -85,8 +91,8 @@ public class Q1712_4points {
 	private static int[] getCrossProduct(int[] x, int[] y) {
 		int[] result = new int[4];
 		result[1] = (x[2]*y[3] - x[3]*y[2]);
-		result[1] = (x[3]*y[1] - x[1]*y[3]);
-		result[2] = (x[1]*y[2] - x[2]*y[1]);
+		result[2] = (x[3]*y[1] - x[1]*y[3]);
+		result[3] = (x[1]*y[2] - x[2]*y[1]);
 		return result;
 	}
 
