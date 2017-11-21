@@ -1,4 +1,4 @@
-package preTest;
+package preTest; 
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,12 +28,47 @@ public class Q1712_4points {
 			c[2] = Integer.parseInt(st.nextToken());
 			c[3] = Integer.parseInt(st.nextToken());
 			
-			int[]crossProduct = getCrossProduct(a,b);
-			int dotProduct = getDotProduct(a,b);
+			System.out.println("#"+tc+" "+getRelationIdxOfPoints());						
 		}
 		
 	}
 	
+	private static int getRelationIdxOfPoints() {
+		int result = 3;
+		if(a[1] == 0 && a[2] == 0 && a[3] == 0 && b[1] == 0 && b[2] == 0 && b[3] == 0 && c[1] == 0 && c[2] == 0 && c[3] == 0 ){
+			result = 0;			
+		}else if(isOneLineInvolve()){//3C2 로 뽑은 두 벡터 x,y의 내적의 절대값이 |x|*|y|과 같은 경우
+			result = 1;			
+		}else if(isOnePlaneInvolve()){//세벡터의 삼중곱 a⋅(b×c)=b⋅(c×a)=c⋅(a×b) = 0인경우  
+			result = 2;
+		}else {
+			//do nothing
+		}	
+		return result;
+	}
+	
+	private static boolean isOnePlaneInvolve() {
+		boolean result = false;
+		if(getDotProduct(a, getCrossProduct(b,c)) == 0 ){
+			result = true;
+		}
+		return result;
+	}
+
+	private static boolean isOneLineInvolve() {
+		boolean result = false;
+		if(Math.abs(getDotProduct(a,b)) == (getVSize(a) * getVSize(b))
+		&& Math.abs(getDotProduct(b,c)) == (getVSize(b) * getVSize(c))
+		&& Math.abs(getDotProduct(c,a)) == (getVSize(c) * getVSize(a))){
+			result = true;
+		}	
+		return result;
+	}
+
+	private static double getVSize(int[] x) {		
+		return Math.sqrt(Math.pow(x[1], 2) + Math.pow(x[2], 2) + Math.pow(x[2], 2));
+	}
+
 	/* a = a1,a2,a3
 	 * b = b1,b2,b3
 	 * a*b = a1*b1 + a2*b2 + a3*b3
