@@ -62,17 +62,17 @@ public class Q1712_4points {
 		System.out.println(Math.abs(getDotProduct(b,c)) + "|" + (int)(getVSize(b) * getVSize(c)));
 		System.out.println(Math.abs(getDotProduct(c,a)) + "|" + (int)(getVSize(c) * getVSize(a)));
 		
-		if(Math.abs(getDotProduct(a,b)) == (getVSize(a) * getVSize(b))
-		&& Math.abs(getDotProduct(b,c)) == (getVSize(b) * getVSize(c))
-		&& Math.abs(getDotProduct(c,a)) == (getVSize(c) * getVSize(a))){
+		if(Math.pow(getDotProduct(a,b),2) == (getVSize(a) * getVSize(b))
+		&& Math.pow(getDotProduct(b,c),2) == (getVSize(b) * getVSize(c))
+		&& Math.pow(getDotProduct(c,a),2) == (getVSize(c) * getVSize(a))){
 			result = true;
 		}	
 		return result;
 	}
 
 	private static double getVSize(int[] x) {		
-		
-		return Math.sqrt(Math.pow(x[1], 2) + Math.pow(x[2], 2) + Math.pow(x[3], 2));
+		//return Math.sqrt(Math.pow(x[1], 2) + Math.pow(x[2], 2) + Math.pow(x[3], 2));
+		return (Math.pow(x[1], 2) + Math.pow(x[2], 2) + Math.pow(x[3], 2));
 	}
 
 	/* a = a1,a2,a3
