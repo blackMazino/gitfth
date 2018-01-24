@@ -23,9 +23,7 @@ public class defaultCode {
 			
 //			System.out.println("#"+tc+"");
 //		}
-
 		br.close();
-
 	}
 
 }
