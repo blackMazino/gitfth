@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 public class defaultCode {
 
 	static int N;
-	
 	public static void main(String[] args) throws Exception, IOException {
 		// TODO Auto-generated method stub
 		
@@ -18,8 +17,7 @@ public class defaultCode {
 //		for(int tc=1;tc<=TC;tc++){
 			st = new StringTokenizer(br.readLine());
 			N = Integer.parseInt(st.nextToken());
-			
-			
+			 
 			
 //			System.out.println("#"+tc+"");
 //		}
@@ -27,3 +25,5 @@ public class defaultCode {
 	}
 
 }
+
+
