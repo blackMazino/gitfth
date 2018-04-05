@@ -12,8 +12,8 @@ import java.util.StringTokenizer;
 public class Day8_01_Graph_그래프순회_dfs_bfs {
 /*
 문제
-그래프에서 탐색을 하는 방법에는 여러 가지가 존재한다. 깊이 우선 탐색(DFS; Depth First Search)과 너비 우선 탐색(BFS; Breadth First Search)가 대표적인 탐색 방법이다. 깊이 우선 탐색과 너비 우선 탐색을 하는 프로그램을 작성하시오.
-
+그래프에서 탐색을 하는 방법에는 여러 가지가 존재한다. 깊이 우선 탐색(DFS; Depth First Search)과 너비 우선 탐색(BFS; Breadth First Search)가 대표적인 탐색 방법이다.
+깊이 우선 탐색과 너비 우선 탐색을 하는 프로그램을 작성하시오.
 이 문제에서 너비 우선 탐색이란 큐를 사용하여 한 번에 하나의 정점만 탐색을 하는 형태만을 생각한다. 또한 주어지는 그래프는 시작점을 포함하는 하나의 연결그래프(connected graph)이다.
 
 입력

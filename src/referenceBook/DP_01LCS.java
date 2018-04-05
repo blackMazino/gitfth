@@ -1,11 +1,11 @@
-package class_swProblemSolving;
+package referenceBook;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class referenceBook_LCS {
+public class DP_01LCS {
 	/*
 	 * LCS (Longest Common Subsequence) ● 정의 두 수열에서 순서를 그대로 유지하면서 가장 긴 공통 부분 수열을
 	 * 찾을 때 사용하는 알고리즘 ● 설명 두 수열의 비교할 값이 같을 경우 현재 이전까지 비교한 길이의 A, B의 LCS에서 1 증가

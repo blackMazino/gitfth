@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-//강사풀이
+//강사풀이 : 이분탐색
 public class Day1_05_정렬_지은이가지은집2 {
 
 	static int TC;

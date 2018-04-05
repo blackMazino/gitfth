@@ -1,9 +1,9 @@
-package class_swProblemSolving;
+package referenceBook;
 
 import java.util.ArrayList;
 import java.util.*;
 
-public class referenceBook_dijkstra {
+public class Graph_03Dijkstra {
 
 //}
 //class Dijkstra {  

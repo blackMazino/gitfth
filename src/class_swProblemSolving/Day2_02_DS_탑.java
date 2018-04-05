@@ -59,7 +59,7 @@ public class Day2_02_DS_탑 {
 				tower[i] = Integer.parseInt(st.nextToken());
 				if(i>1){
 //					System.out.println(tower[i-1]+","+tower[i]);
-//					/if(tower[i-1] < tower[i]){
+//					if(tower[i-1] < tower[i]){
 						receiverTower[i] = getMinIdxTower(i, i-1);
 //					}else{
 //						receiverTower[i] = i-1;

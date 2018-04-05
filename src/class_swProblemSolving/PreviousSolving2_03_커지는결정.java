@@ -174,4 +174,5 @@ class Density2 implements Comparator<Density2>{
 }
  
 //둘의 차이는 아래 URL의 내용 참고
-//includestudio.tistory.com/35
+//includestdio.tistory.com/35
+//http://cwondev.tistory.com/15

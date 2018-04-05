@@ -1,11 +1,11 @@
-package class_swProblemSolving;
+package referenceBook;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class referenceBook_LIS {
+public class DP_02LIS {
 	// LIS
 	/*
 	 * LIS (Longest Increasing Subsequence) 나열된 수열에서 배열 순서를 유지하면서 크기가 점진적으로 커지는

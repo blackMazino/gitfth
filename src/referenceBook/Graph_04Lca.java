@@ -1,9 +1,9 @@
-package class_swProblemSolving;
+package referenceBook;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-public class referenceBook_lca {
+public class Graph_04Lca {
 
 	/*
 	원소의 개수가 63개(root : 1) 인 완전 2진 트리의 두 점에서 공통 조상을 찾는 예제

@@ -37,12 +37,14 @@ N이 주어졌을 때, 퀸을 놓는 방법의 수를 구하시오.
 	}
 	//back tracking
 	private static void putQueen(int[] q, int len) {
+//		System.out.println(len);
        if (len == N)
             answer++;
         LOOP:
         for (int j = 0; j < N; j++) {
             for (int m = 0; m < len; m++){
-                if (q[m] == j || Math.abs(m - len) == Math.abs(q[m] - j)) 
+                if (q[m] == j //수직 
+                		|| Math.abs(m - len) == Math.abs(q[m] - j)) //대각선 
                     continue LOOP;
             }
             q[len] = j;
@@ -58,10 +60,12 @@ import java.io.InputStreamReader;
    
 public class source {
     static int N, ans;
-    static boolean[] col, d1, d2;
+    static boolean[] col, d1, d2;//col:x축, d1:y축, d2:대각선
       
     static void dfs(int y) {
-        if (y == N){ ans++; return; }
+        if (y == N){ 
+        	ans++; return; 
+        }
         for (int x=0;x<N;x++){
             if (col[x] || d1[y+x] || d2[y-x+N-1]) continue;
             col[x] = d1[y+x] = d2[y-x+N-1] = true;

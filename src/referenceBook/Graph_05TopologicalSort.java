@@ -1,11 +1,11 @@
-package class_swProblemSolving;
+package referenceBook;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class referenceBook_topologicalSort {
+public class Graph_05TopologicalSort {
 	/*
 	 * 입력은 첫줄에 노드의 개수N( 2 < N <= 100) 와 간선의 개수 M이 주어지고, 그 다음줄부터 순차대로 각 간선의 출발노드와
 	 * 도착노드가 적혀진다. 이와 같을 때, 위상 정렬을 하여 출력하시오. 단 같은 레벨의 노드인 경우 출력순서는 관계없다. [입력] 5

@@ -1,6 +1,6 @@
-package class_swProblemSolving;
+package referenceBook;
 
-public class referenceBook_unionFind {
+public class Search_03UnionFind {
 	// UnionFind.java
 
 	// }

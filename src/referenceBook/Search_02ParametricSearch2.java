@@ -1,8 +1,8 @@
-package class_swProblemSolving;
+package referenceBook;
 
 import java.util.Scanner;
 
-public class referenceBook_parametricSearch2 {
+public class Search_02ParametricSearch2 {
 	/*
 	 * 목재가 N개 있고, 목재 절단기가 있다. 예를 들어 목재 절단기의 폭을 10으로 설정하면 목재를 길이 10만큼 절단할 수 있다.
 	 * 절단하고 남은 목재 길이의 합을 H라고 했을 때, 주어지는 목재 길이의 합 만큼 얻기 위해 설정해야 하는 목재 절단기 폭의 최대값을

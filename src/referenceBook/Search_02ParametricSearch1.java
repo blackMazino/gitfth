@@ -1,8 +1,8 @@
-package class_swProblemSolving;
+package referenceBook;
 
 import java.util.Scanner;
 
-public class referenceBook_parametricSearch1 {
+public class Search_02ParametricSearch1 {
 
 	/*
 	 * 동영상 강의파일을 USB메모리에 복사하고자 한다. 동영상 강의의 순서가 변경되면 학습자가 혼란을 느끼게 되므로 순서대로
