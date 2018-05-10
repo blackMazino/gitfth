@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class exercise {
+public class ZZexercise {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub

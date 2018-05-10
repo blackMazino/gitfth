@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -48,11 +49,16 @@ public class Day8_01_Graph_그래프순회_dfs_bfs {
 
 */
 	static int V,E,S;
-	static int [] visited; //0 : 미방문, 1:방문 boolean으로 정의해도된다
+	static int [] visited; //0 : 미방문, 1:방문 boolean으로 정의해도된다	
 
 	//아래 ArrayList선언문이 외우기 어려우면 오른쪽형태를 봐라 :  static int [] con;
 	static ArrayList<Integer>[] con;//각 정점vertex(node)에서의 간선edge(link)정보
 	static ArrayList<Integer> dfsOut, bfsOut;
+	
+	
+	static boolean [] visit; //0 : 미방문, 1:방문 boolean으로 정의해도된다
+	static ArrayList<Integer>[] conn;//각 정점vertex(node)에서의 간선edge(link)정보
+	
 	public static void main(String[] args) throws Exception, IOException {
 		// TODO Auto-generated method stub
 		
@@ -64,7 +70,43 @@ public class Day8_01_Graph_그래프순회_dfs_bfs {
 			V = Integer.parseInt(st.nextToken());
 			E = Integer.parseInt(st.nextToken());
 			S = Integer.parseInt(st.nextToken());
+			
+			conn = new ArrayList[V+1];
+			for(int i=1;i<=V;i++){
+				conn[i]= new ArrayList<>();
+			}
+			for(int i=1;i<=E;i++){
+				st = new StringTokenizer(br.readLine());
+				int s = Integer.parseInt(st.nextToken());
+				int e = Integer.parseInt(st.nextToken());
+				conn[s].add(e);
+				conn[e].add(s);
+			}
+			for(int i=1;i<=V;i++){
+				Collections.sort(conn[i]);
+			}
+			visit = new boolean [V+1];
+			Arrays.fill(visit, false);
 					
+			//dfs
+			dfsOut = new ArrayList<>();
+			dfs2(S);
+			for(int i:dfsOut){
+				System.out.print(i+" ");
+			}
+			System.out.println();
+			
+			
+			//bfs
+			Arrays.fill(visit, false);//initialize
+			bfsOut = new ArrayList<>();
+			bfs2(S);
+   	        for(int out : bfsOut){
+   	        	System.out.print(out+" ");
+   	        }
+   	        System.out.println();
+
+			/*
 			con = new ArrayList[V+1];
 			for(int i=1;i<=V;i++){
 		          con[i] = new ArrayList<>();
@@ -98,7 +140,18 @@ public class Day8_01_Graph_그래프순회_dfs_bfs {
    	        System.out.println();
 //			System.out.println("#"+tc+"");
 //		}
+		*/
 		br.close();
+	}
+	
+	private static void dfs(int n) {
+	      dfsOut.add(n); 
+	      visited[n] = 1;//방문
+	      for (int t: con[n]){
+	    	  if (visited[t] == 0){
+		          dfs(t);
+		      }
+	      }	    	  
 	}
 	
 	private static void bfs(int n) {
@@ -115,16 +168,32 @@ public class Day8_01_Graph_그래프순회_dfs_bfs {
 	    		  }	    		  
 	    	  }
 	      }	
+	}	
+	
+	public static void dfs2(int n){
+		dfsOut.add(n);
+		visit[n] = true;
+		for(int t: conn[n]){
+			if(!visit[t]){
+				dfs2(t);
+			}
+		}		
 	}
 	
-	private static void dfs(int n) {
-	      dfsOut.add(n); 
-	      visited[n] = 1;//방문
-	      for (int t: con[n]){
-	    	  if (visited[t] == 0){
-		          dfs(t);
-		      }
-	      }	    	  
+	private static void bfs2(int n) {
+	      Queue<Integer> que = new LinkedList<>();
+	      que.add(n); 
+	      visit[n] = true;;
+	      while(!que.isEmpty()){
+	    	  int u = que.poll();//Retrieves and removes the head of this queue
+	    	  bfsOut.add(u);
+	    	  for(int v : conn[u]){
+	    		  if(!visit[v]){
+	    			  visit[v] = true;
+	    			  que.add(v);
+	    		  }	    		  
+	    	  }
+	      }	
 	}
 }
 

@@ -28,7 +28,21 @@ public class Graph_04Lca {
 	    static int[][] p = new int[MAX][MD];
 	    static int[] d = new int[MAX];
 	    static int[] visited = new int[MAX];
-   
+       
+	 
+	    public static void main(String[] args) throws NumberFormatException, IOException {	 
+	        dfs(1, 0);	 
+	        aces_find();	 
+	        Scanner sc = new Scanner(System.in);	 
+	        int N = sc.nextInt();	 
+	        for (int i = 0 ; i < N; i++){	 
+	            int s = sc.nextInt();	 
+	            int e = sc.nextInt();	 
+	            System.out.println(lca(s,e));	 
+	        }	 
+	    }
+	    
+	    
 	    static void dfs(int here, int depth) { 
 	        if (here >= MAX) return;	 
 	        visited[here] = 1;	 
@@ -70,19 +84,5 @@ public class Graph_04Lca {
 	            }	 
 	        }
 	        return p[x][0];
-	    }
-	 
-	      
-	 
-	    public static void main(String[] args) throws NumberFormatException, IOException {	 
-	        dfs(1, 0);	 
-	        aces_find();	 
-	        Scanner sc = new Scanner(System.in);	 
-	        int N = sc.nextInt();	 
-	        for (int i = 0 ; i < N; i++){	 
-	            int s = sc.nextInt();	 
-	            int e = sc.nextInt();	 
-	            System.out.println(lca(s,e));	 
-	        }	 
 	    }
 }

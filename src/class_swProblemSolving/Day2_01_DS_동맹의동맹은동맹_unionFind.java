@@ -93,7 +93,7 @@ public class Day2_01_DS_동맹의동맹은동맹_unionFind {
 	
 	private static int find(int n) {
 		if(par[n]==n) return n;
-		else return par[n]=find(par[n]);//경로압축?
+		else return par[n]=find(par[n]);//경로압축 : 가장상위부모를 찾아서 셋팅
 	}
 
 	//union
