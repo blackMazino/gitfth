@@ -183,9 +183,9 @@ public class Day8_01_Graph_그래프순회_dfs_bfs {
 	private static void bfs2(int n) {
 	      Queue<Integer> que = new LinkedList<>();
 	      que.add(n); 
-	      visit[n] = true;;
+	      visit[n] = true;
 	      while(!que.isEmpty()){
-	    	  int u = que.poll();//Retrieves and removes the head of this queue
+	    	  int u = que.poll();//Retrieves and removes the head of this queue	    	  
 	    	  bfsOut.add(u);
 	    	  for(int v : conn[u]){
 	    		  if(!visit[v]){

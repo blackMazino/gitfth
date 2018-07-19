@@ -3,11 +3,14 @@
 package exercise;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-public class 자료구조_KOITP_탑 {
+public class 자료구조_STACK_KOITP_탑 {
 	/*
 	삼성 통신연구소는 레이저를 이용한 새로운 비밀 통신 시스템 개발을 위한 실험을 하고 있다. 
 	실험을 위하여 일직선 위에 N개의 높이가 서로 다른 탑을 수평 직선의 왼쪽부터 오른쪽 방향으로 차례로 세우고, 각 탑의 꼭대기에 레이저 송신기를 설치하였다. 
@@ -31,20 +34,56 @@ public class 자료구조_KOITP_탑 {
 	0 1 1 1 4 5 4 7 4
 	 * */
 	
-	static int N;
+	static int T,N;
 	static int[] towers;
+	static LinkedList<Integer> stack;
 	
 	public static void main(String[] args) throws Exception, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st;
 		
 		st = new StringTokenizer(br.readLine());
 		N = Integer.parseInt(st.nextToken());
 		towers = new int[N+1];
 		st = new StringTokenizer(br.readLine());
+		
+		stack = new LinkedList<Integer>();
 		for(int i=1;i<=N;i++){
 			towers[i] = Integer.parseInt(st.nextToken());
+			while(!stack.isEmpty() && towers[stack.getLast()] <= towers[i]){
+				stack.removeLast();//stack.pop();
+			}
+			int ans = 0;
+			if(!stack.isEmpty()){
+				ans = stack.getLast();//stack.peek();
+				
+			}
+			bw.write(ans +" ");
+			stack.addLast(i);;//stack.push(i);
+			
+			/*
+			 * stack은 위로 쌓이는 탑이라고 보면 이해가 빠르다.
+			 * 아래서 부터 내용이 쌓이고 위에서부터 first 아래로 last 방향이다.
+			 * 맨 위 값 확인하는  peek = getFirst
+			 * 맨 위 값 제거하는  pop = removeFirst
+			 * 데이터 쌓는 push = addFirst
+			 * 
+			 * */
+//			while(!stack.isEmpty() && towers[stack.getFirst()] <= towers[i]){
+//				stack.removeFirst();//stack.pop();
+//			}
+//			int ans = 0;
+//			if(!stack.isEmpty()){
+//				ans = stack.getFirst();//stack.peek();
+//				
+//			}
+//			bw.write(ans +" ");
+//			stack.addFirst(i);;//stack.push(i);	
 		}
+		bw.write("\n");
+		bw.flush();
+		bw.close();
 		
 	}
 

@@ -3,6 +3,8 @@ package class_swProblemSolving;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 //못품 다시풀기
@@ -35,6 +37,7 @@ public class Day2_03_DS_slidingWindows_FAIL {
 	//static int TC;
 	static int N,K;
 	static int no[];
+
 	public static void main(String[] args) throws Exception, IOException {
 		// TODO Auto-generated method stub
 		
@@ -49,8 +52,7 @@ public class Day2_03_DS_slidingWindows_FAIL {
 			for(int i=1;i<=N;i++){
 				st = new StringTokenizer(br.readLine());
 				no[i] = Integer.parseInt(st.nextToken());	
-			}
-			
+			}			
 			
 //			System.out.println("#"+tc+"");
 //		}
@@ -78,14 +80,16 @@ public class source {
         A = new int[N+1];
         st = new StringTokenizer(br.readLine());
         for (int i=1;i<=N;i++) A[i] = Integer.parseInt(st.nextToken());
-        Deque<Integer> mn = new ArrayDeque<Integer>();
-        Deque<Integer> mx = new ArrayDeque<Integer>();
+        Deque<Integer> mn = new ArrayDeque<Integer>();//최소
+        Deque<Integer> mx = new ArrayDeque<Integer>();//최대
         long sum = 0;
         for (int i=1;i<=N;i++){
             while (!mn.isEmpty() && A[mn.getLast()] >= A[i]) mn.pollLast();
-            while (!mx.isEmpty() && A[mx.getLast()] <= A[i]) mx.pollLast();
             mn.addLast(i);
+            
+            while (!mx.isEmpty() && A[mx.getLast()] <= A[i]) mx.pollLast();
             mx.addLast(i);
+            
             sum += A[i];
             if (i > K) sum -= A[i-K];
             while (mn.getFirst() <= i-K) mn.pollFirst();

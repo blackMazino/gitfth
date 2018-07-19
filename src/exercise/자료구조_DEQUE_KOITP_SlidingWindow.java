@@ -1,12 +1,16 @@
 package exercise;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-public class 자료구조_KOITP_SlidingWindow {
+public class 자료구조_DEQUE_KOITP_SlidingWindow {
 	/*
+	 * https://koitp.org/problem/SLIDING_WINDOWS/read/
 	길이가 N인 정수 배열이 있다. 이 배열의 부분배열 중 크기가 K인 부분배열은 총 N-K+1개 있다. 
 	이 부분배열에 대해 부분배열에 속한 최대값, 최소값, 합을 구하는 프로그램을 작성하자.
 	예를 들어, 배열 [1, 3, -1, -3, 5, 3, 6, 7]이 있고 K=3이라 하자. 
@@ -32,16 +36,51 @@ public class 자료구조_KOITP_SlidingWindow {
 	 * */
 	static int N,K;
 	static int arr[];
+	static long sum;
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st;
 		st = new StringTokenizer(br.readLine());
 		
 		N = Integer.parseInt(st.nextToken());
 		K = Integer.parseInt(st.nextToken());
-		
+		arr = new int[N+1];
+		sum = 0;
+		st = new StringTokenizer(br.readLine());
+		for(int i=1; i<=N;i++){
+			arr[i] = Integer.parseInt(st.nextToken());			
+		}
+		LinkedList<Integer> min = new LinkedList<Integer>();
+		LinkedList<Integer> max = new LinkedList<Integer>();
+			
+		for(int i=1;i<=N;i++){
+			//min
+			while(!min.isEmpty() && arr[min.getLast()] >= arr[i]) min.pollLast();
+			min.addLast(i);//save index
+						
+			//max
+			while(!max.isEmpty() && arr[max.getLast()] <= arr[i]) max.pollLast();
+			max.addLast(i);//save index
+			
+			//sum
+			sum += arr[i];
+			
+			if(i>=K){
+				sum = sum - arr[i-K];
+				//arrange adv. nums
+				while(min.getFirst() <= i-K) min.pollFirst();
+				while(max.getFirst() <= i-K) max.pollFirst();
+				//System.out.println(arr[min.getFirst()] + " "+ arr[max.getFirst()]+" "+sum);
+				bw.write(arr[min.getFirst()] + " "+ arr[max.getFirst()]+" "+sum + "\n");
+			}
+			
+			
+		}
+		bw.flush();
+		bw.close();
 	}
 
 }

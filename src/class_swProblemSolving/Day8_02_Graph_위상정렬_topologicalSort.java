@@ -65,6 +65,7 @@ or
 			for(int i=1;i<=V;i++){
 				if(indegreeArr[i]==0){//0건인건 호출하는 주체(각 tree별 최상위부모)는 스택에 넣자
 					stk.addLast(i);
+					
 				}				
 			}
 			while(!stk.isEmpty()){
