@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 public class 자료구조_STACK_KOITP_탑 {
+	//빠른입출력 필요
 	/*
 	삼성 통신연구소는 레이저를 이용한 새로운 비밀 통신 시스템 개발을 위한 실험을 하고 있다. 
 	실험을 위하여 일직선 위에 N개의 높이가 서로 다른 탑을 수평 직선의 왼쪽부터 오른쪽 방향으로 차례로 세우고, 각 탑의 꼭대기에 레이저 송신기를 설치하였다. 
@@ -49,6 +50,7 @@ public class 자료구조_STACK_KOITP_탑 {
 		st = new StringTokenizer(br.readLine());
 		
 		stack = new LinkedList<Integer>();
+
 		for(int i=1;i<=N;i++){
 			towers[i] = Integer.parseInt(st.nextToken());
 			while(!stack.isEmpty() && towers[stack.getLast()] <= towers[i]){
@@ -69,17 +71,18 @@ public class 자료구조_STACK_KOITP_탑 {
 			 * 맨 위 값 제거하는  pop = removeFirst
 			 * 데이터 쌓는 push = addFirst
 			 * 
-			 * */
-//			while(!stack.isEmpty() && towers[stack.getFirst()] <= towers[i]){
-//				stack.removeFirst();//stack.pop();
-//			}
-//			int ans = 0;
-//			if(!stack.isEmpty()){
-//				ans = stack.getFirst();//stack.peek();
-//				
-//			}
-//			bw.write(ans +" ");
-//			stack.addFirst(i);;//stack.push(i);	
+			 * 
+			while(!stack.isEmpty() && towers[stack.getFirst()] <= towers[i]){
+				stack.removeFirst();//stack.pop();
+			}
+			int ans = 0;
+			if(!stack.isEmpty()){
+				ans = stack.getFirst();//stack.peek();
+				
+			}
+			bw.write(ans +" ");
+			stack.addFirst(i);;//stack.push(i);
+			*/	
 		}
 		bw.write("\n");
 		bw.flush();

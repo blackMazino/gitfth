@@ -33,7 +33,7 @@ public class 그래프_LCA_KOITP_상인 {
 10
 */
 	static int N;
-	static int M = 20;
+	static int M = 16;
 	static ArrayList<Integer>[] con;
 	static int [] depth;
 	static int [][] parent;
@@ -63,7 +63,7 @@ public class 그래프_LCA_KOITP_상인 {
 		}
 		dfs(1,1,0);
 		//Sparse Table 
-		for(int k=0;k<M-1;k++){
+		for(int k=0;k<M;k++){
 			for(int i=1;i<=N;i++){
 				parent[k+1][i] = parent[k][ parent[k][i] ];
 			}	
@@ -94,26 +94,26 @@ public class 그래프_LCA_KOITP_상인 {
 	private static int lca2(int a, int b) {
 		if(depth[a] < depth[b]) return lca2(b,a);
         int d = depth[a] - depth[b];
-        for(int i = 0; i < M; ++i){
-        	//연산순서 : 쉬프트연산 > 비트연산
-        	// << :  * (2^i)
-        	// >> :  / (2^i)
-        	// &  : 논리곱 각 비트가 둘다 1이어야 1 나머지는 0
-            if((d & 1 << i) > 0){
-                a = parent[i][a];
-            }
-        }
-//        int i=0;
-//        while(d>0){
-//	      	if(d%2==1){
-//	    			a = parent[i][a];
-//    		}
-//    		d /= 2;
-//        	i++;        
+//        for(int i = 0; i < M; ++i){
+//        	//연산순서 : 쉬프트연산 > 비트연산
+//        	// << :  * (2^i)
+//        	// >> :  / (2^i)
+//        	// &  : 논리곱 각 비트가 둘다 1이어야 1 나머지는 0
+//            if((d & 1 << i) > 0){
+//                a = parent[i][a];
+//            }
 //        }
+        int k=0;
+        while(d>0){
+	      	if(d%2==1){
+	    			a = parent[k][a];
+    		}
+    		d /= 2;
+        	k++;        
+        }
         
         if(a == b) return a;
-        for(int i = M - 1; i >= 0; --i){
+        for(int i = M; i >= 0; i--){
             if(parent[i][a] != parent[i][b]){
                 a = parent[i][a];
                 b = parent[i][b];
@@ -124,7 +124,7 @@ public class 그래프_LCA_KOITP_상인 {
 
 	private static void dfs(int cur, int d, int p) {
 		depth[cur]=d;
-		parent[0][cur]=p;
+		parent[0][cur]=p;//0은의 2^0을 말할때 0이다
 		for(int next : con[cur]){
 			if(next != p){
 				dfs(next, d+1, cur);
