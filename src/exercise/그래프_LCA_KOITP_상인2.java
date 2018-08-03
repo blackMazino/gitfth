@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class 그래프_LCA_KOITP_상인2 {
@@ -33,9 +35,11 @@ public class 그래프_LCA_KOITP_상인2 {
 	static int N;
 	static int[]depth;
 	static int[][]parent;
+	static boolean[] visited;
 	static ArrayList<Integer>[] con;
 	static long answer;
 	static int Max = 16;
+	
 	
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
@@ -47,6 +51,7 @@ public class 그래프_LCA_KOITP_상인2 {
 		N = Integer.parseInt(st.nextToken());
 		con = new ArrayList[N+1];
 		depth = new int[N+1];//깊어봐야 N
+		visited = new boolean[N+1];
 		parent = new int [Max+1][N+1];//[조상노드][현재노드]
 		
 		for(int i=1;i<=N;i++) con[i] = new ArrayList<Integer>();		
@@ -60,6 +65,7 @@ public class 그래프_LCA_KOITP_상인2 {
 		}
 		
 		dfsForLCA(1,1,0);
+//		bfsForLCA(1,1,0);
 		
 		//Sparas table
 		for(int k=0;k<Max;k++){
@@ -81,11 +87,40 @@ public class 그래프_LCA_KOITP_상인2 {
 	private static void dfsForLCA(int cur, int d, int p) {
 		depth[cur] = d;
 		parent[0][cur] = p;
+		visited[cur] = true;
 		for(int next:con[cur]){
-			if(next != p){
+//			if(next != p){
+			if(!visited[next]){
+				visited[next] = true;
 				dfsForLCA(next,d+1,cur);
 			}
 		}	
+	}
+	
+	public static void bfsForLCA(int cur, int d, int p){
+		Queue<Integer> que = new LinkedList<>();
+		que.add(cur);
+		depth[cur] = d;
+		parent[0][cur] = p;
+		visited[cur] = true;
+//		System.out.println(cur+","+d+","+p);
+//		int cnt = 0;
+		while(!que.isEmpty()){
+			int u = que.poll();			
+			for(int next : con[u]){
+//				if(next != p){
+				if(!visited[next]){
+					que.add(next);
+					visited[next] = true;
+					depth[next] = depth[u] +1;
+					parent[0][next] = u;
+//					System.out.println(next+","+depth[next]+","+u);
+//					cnt++;
+				}
+				
+			}
+//			if(cnt>=30) break;
+		}
 	}
 	
 	private static long getMovingDay(int s, int e) {
