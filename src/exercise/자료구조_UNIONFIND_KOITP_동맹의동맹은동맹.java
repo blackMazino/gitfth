@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class 자료구조_UNIONFIND_동맹의동맹은동맹 {
+public class 자료구조_UNIONFIND_KOITP_동맹의동맹은동맹 {
 
 	static int N,Q;
 	static int par[];

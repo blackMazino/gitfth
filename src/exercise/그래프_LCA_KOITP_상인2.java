@@ -67,7 +67,7 @@ public class 그래프_LCA_KOITP_상인2 {
 		dfsForLCA(1,1,0);
 //		bfsForLCA(1,1,0);
 		
-		//Sparas table
+		//Sparase table
 		for(int k=0;k<Max;k++){
 			for(int n=1;n<=N;n++){
 				parent[k+1][n] = parent[k][ parent[k][n] ];//n의 2^(k+1)번째 조상은 = 그조상의 2^k번째 조상과 같다
@@ -103,8 +103,6 @@ public class 그래프_LCA_KOITP_상인2 {
 		depth[cur] = d;
 		parent[0][cur] = p;
 		visited[cur] = true;
-//		System.out.println(cur+","+d+","+p);
-//		int cnt = 0;
 		while(!que.isEmpty()){
 			int u = que.poll();			
 			for(int next : con[u]){
@@ -114,12 +112,9 @@ public class 그래프_LCA_KOITP_상인2 {
 					visited[next] = true;
 					depth[next] = depth[u] +1;
 					parent[0][next] = u;
-//					System.out.println(next+","+depth[next]+","+u);
-//					cnt++;
 				}
 				
 			}
-//			if(cnt>=30) break;
 		}
 	}
 	
