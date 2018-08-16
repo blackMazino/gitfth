@@ -1,4 +1,13 @@
 package exercise;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
 /*
 우주에 N개의 행성이 있다. 어떤 행성쌍에는 워프장치가 존재하는데
 ai행성에서bi행성으로 워프를 타고ci시간만에 이동할 수 있다. 
@@ -24,9 +33,49 @@ ai행성에서bi행성으로 워프를 타고ci시간만에 이동할 수 있다
 2
 */
 public class 그래프_DP_KOITP_워프 {
-
-	public static void main(String[] args) {
+	
+	static int N,M;
+	static ArrayList<Integer> con[];
+	static ArrayList<Integer> conW[];
+	static long D[];
+	
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
+		
+		con = new ArrayList[N+1]; conW = new ArrayList[N+1];
+		D = new long[N+1];
+		for(int i =1;i<=N;i++ ){
+			con[i] = new ArrayList<>();
+			conW[i] = new ArrayList<>();
+			D [i] = Long.MAX_VALUE;
+		}
+		
+		for(int i=1;i<=M;i++){
+			st = new StringTokenizer(br.readLine());
+			int a = Integer.parseInt(st.nextToken());
+			int b = Integer.parseInt(st.nextToken());
+			int c = Integer.parseInt(st.nextToken());
+			con[a].add(b); 
+			conW[a].add(c); 
+		}
+
+		D[1] = 0;
+		for(int i=1;i<=N;i++){
+			if(D[i] < Long.MAX_VALUE){
+				for (int j=0;j<con[i].size();j++){
+					int k = con[i].get(j);
+					int w = conW[i].get(j);
+					D[k] = Math.min(D[k], D[i]+w);
+				}
+			}
+		}
+		
+		System.out.println(D[N] < Long.MAX_VALUE ? D[N] : -1);
 
 	}
 

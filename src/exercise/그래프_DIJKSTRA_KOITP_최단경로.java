@@ -1,4 +1,15 @@
 package exercise;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.StringTokenizer;
+
 /*
 N 개의 도시가 있다. 각 도시는 1번부터N번까지 번호가 매겨져있다. 
 그리고 서로 다른 두 도시를 잇는 M개의 도로가 있다. 도로마다 길이가 다를 수 있으며, 
@@ -42,9 +53,65 @@ N 개의 도시가 있다. 각 도시는 1번부터N번까지 번호가 매겨�
 */
 public class 그래프_DIJKSTRA_KOITP_최단경로 {
 
-	public static void main(String[] args) {
+	static int N,M;
+	static long d[];
+	static ArrayList<Integer> con[];
+	static ArrayList<Integer> conW[];
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
+		
+		con = new ArrayList[N+1]; conW = new ArrayList[N+1]; 
+		d= new long[N+1];
+		for(int i =1;i<=N;i++ ){
+			con[i] = new ArrayList<>();
+			conW[i] = new ArrayList<>();
+			d[i] = Long.MAX_VALUE;
+		}
+		
+		for(int i=1;i<=M;i++){
+			st = new StringTokenizer(br.readLine());
+			int a = Integer.parseInt(st.nextToken());
+			int b = Integer.parseInt(st.nextToken());
+			int c = Integer.parseInt(st.nextToken());
+			con[a].add(b); con[b].add(a);
+			conW[a].add(c); conW[b].add(c);
+		}
+		
+		PriorityQueue<long[]> pQ = new PriorityQueue<>(10, new Comparator<long[]>(){
 
+			@Override
+			public int compare(long[] o1, long[] o2) {
+				// TODO Auto-generated method stub
+				return ( (o1[0] - o2[0])>0 ? 1 : -1 );
+			}
+			
+		});
+		
+		d[1] = 0;
+		pQ.add(new long[] {0,1});//거리값, 정점
+		
+		while(!pQ.isEmpty()){
+			long a = pQ.peek()[1];
+			long b = pQ.peek()[0];
+			pQ.poll();
+			
+			if(d[(int)a] != b) continue;
+			for(int i=0;i<con[(int)a].size();i++){
+				int ti = con[(int)a].get(i);
+				int v = conW[(int)a].get(i);
+				
+				if(d[ti] > d[(int)a] + v){
+					d[ti] = d[(int)a] + v;
+					pQ.add(new long[]{ d[ti], ti });
+				}
+			}		
+		}
+		System.out.println(d[N] < Long.MAX_VALUE ? d[N] : -1);
 	}
 
 }
