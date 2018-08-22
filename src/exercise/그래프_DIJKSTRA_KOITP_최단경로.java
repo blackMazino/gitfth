@@ -89,10 +89,13 @@ public class 그래프_DIJKSTRA_KOITP_최단경로 {
 				// TODO Auto-generated method stub
 				return ( (o1[0] - o2[0])>0 ? 1 : -1 );
 			}
-			
+			 
 		});
 		
 		d[1] = 0;
+//		long [] l = new long[2];
+//		l[0] =0; l[1]=1;
+//		pQ.add(l);
 		pQ.add(new long[] {0,1});//거리값, 정점
 		
 		while(!pQ.isEmpty()){
@@ -115,3 +118,90 @@ public class 그래프_DIJKSTRA_KOITP_최단경로 {
 	}
 
 }
+
+/*
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.PriorityQueue;
+import java.util.StringTokenizer;
+
+public class source {
+	private static int N, M;
+	private static ArrayList<Edge>[] adj;
+
+	public static void main(String[] args) throws Exception {
+		try (BufferedReader in = new BufferedReader(new InputStreamReader(System.in))) {
+			StringTokenizer st = new StringTokenizer(in.readLine());
+
+			N = Integer.parseInt(st.nextToken());
+			M = Integer.parseInt(st.nextToken());
+
+			adj = new ArrayList[N + 1];
+			for (int i = 1; i <= N; i++) {
+				adj[i] = new ArrayList<>();
+			}
+
+			for (int i = 0; i < M; i++) {
+				st = new StringTokenizer(in.readLine());
+
+				int start = Integer.parseInt(st.nextToken());
+				int end = Integer.parseInt(st.nextToken());
+				int cost = Integer.parseInt(st.nextToken());
+
+				adj[start].add(new Edge(end, cost));
+				adj[end].add(new Edge(start, cost));
+			}
+
+			System.out.println(solve());
+		}
+	}
+
+	public static long solve() {
+		PriorityQueue<Edge> queue = new PriorityQueue<>();
+		long[] dist = new long[N + 1];
+		Arrays.fill(dist, Long.MAX_VALUE);
+
+		queue.add(new Edge(1, 0));
+		dist[1] = 0;
+
+		while (!queue.isEmpty()) {
+			Edge cur = queue.poll();
+
+			if (dist[cur.vertex] < cur.cost)
+				continue;
+
+			for (Edge next : adj[cur.vertex]) {
+				if (dist[next.vertex] > cur.cost + next.cost) {
+					dist[next.vertex] = cur.cost + next.cost;
+					queue.add(new Edge(next.vertex, dist[next.vertex]));
+				}
+			}
+		}
+
+		return dist[N] < Long.MAX_VALUE ? dist[N] : -1;
+	}
+
+	static class Edge implements Comparable<Edge> {
+		int vertex;
+		long cost;
+
+		public Edge(int vertex, long cost) {
+			this.vertex = vertex;
+			this.cost = cost;
+		}
+
+		@Override
+		public int compareTo(Edge o) {
+			if (this.cost < o.cost) {
+				return -1;
+			} else if (this.cost == o.cost) {
+				return 0;
+			} else {
+				return 1;
+			}
+		}
+	}
+}
+*/

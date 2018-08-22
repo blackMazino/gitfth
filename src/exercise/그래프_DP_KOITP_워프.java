@@ -68,8 +68,8 @@ public class 그래프_DP_KOITP_워프 {
 		for(int i=1;i<=N;i++){
 			if(D[i] < Long.MAX_VALUE){
 				for (int j=0;j<con[i].size();j++){
-					int k = con[i].get(j);
-					int w = conW[i].get(j);
+					int k = con[i].get(j);//i->k
+					int w = conW[i].get(j);//i->k까지 가는데 cost
 					D[k] = Math.min(D[k], D[i]+w);
 				}
 			}
