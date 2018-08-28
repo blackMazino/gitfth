@@ -12,7 +12,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class 그래프_BFSDFS_그래프순회 {
+public class 그래프_BFSDFS_KOITP_그래프순회 {
 
 	static int V,E,S;
 	static boolean [] visited;

@@ -56,6 +56,7 @@ M개의 줄에 차례대로 입력받은 두 정점의 가장 가까운 공통 �
 	static ArrayList<Integer>[] con;
 	static int [] depth;
 	static int [] parent;
+	static boolean [] visited;
 	
 	public static void main(String[] args) throws Exception, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -70,6 +71,7 @@ M개의 줄에 차례대로 입력받은 두 정점의 가장 가까운 공통 �
 		}
 		depth = new int [N+1];
 		parent = new int[N+1];
+		visited = new boolean[N+1];
 		Arrays.fill(parent, -1);
 		for(int i=1;i<N;i++){
 			st = new StringTokenizer(br.readLine());
@@ -118,6 +120,16 @@ M개의 줄에 차례대로 입력받은 두 정점의 가장 가까운 공통 �
 			}
 		}
 		
+	}
+	
+	private static void dfs2(int cur, int d, int p){
+		depth[cur] = d;
+		parent[cur] = p;
+		for(int t : con[cur]){
+			if(!visited[t]){
+				dfs2(t,d+1,cur);
+			}
+		}
 	}
 	
 }

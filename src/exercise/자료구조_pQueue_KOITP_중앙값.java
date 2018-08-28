@@ -25,8 +25,8 @@ public class 자료구조_pQueue_KOITP_중앙값 {
 //		LinkedList<Integer> L = new LinkedList<>();
 //		LinkedList<Integer> R = new LinkedList<>();
 
-		PriorityQueue<Integer> pL = new PriorityQueue<>();
-		PriorityQueue<Integer> pR = new PriorityQueue<>();
+		PriorityQueue<Integer> maxHeap = new PriorityQueue<>();//큰값이 앞에 오게
+		PriorityQueue<Integer> minHeap = new PriorityQueue<>();//작은값이 앞에 오게
 		
 		for(int i=1;i<=N;i++){
 			st = new StringTokenizer(br.readLine());
@@ -44,18 +44,18 @@ public class 자료구조_pQueue_KOITP_중앙값 {
 //				L.add(-R.removeFirst());
 //			}
 //			if(i%2==1) System.out.println(-R.getFirst());
-
             
-            if (pR.isEmpty() || pR.peek() > v) pL.add(-v);//v의 절대값이 클수록 작은값(앞쪽에)
-            else pR.add(v);
+            
+            if (minHeap.isEmpty() || minHeap.peek() > v) maxHeap.add(-v);//v의 절대값이 클수록 작은값(앞쪽에)
+            else minHeap.add(v);
               
-            while (pL.size() > pR.size()+1)
-                pR.add(-pL.poll());
-            while (pR.size() > pL.size())
-                pL.add(-pR.poll());
+            while (maxHeap.size() > minHeap.size()+1)
+            	minHeap.add(-maxHeap.poll());
+            while (minHeap.size() > maxHeap.size())
+            	maxHeap.add(-minHeap.poll());
                           
             if (i % 2 == 1){
-            	System.out.println(-pL.peek());            	            	
+            	System.out.println(-maxHeap.peek());            	            	
             }
 		}
 		

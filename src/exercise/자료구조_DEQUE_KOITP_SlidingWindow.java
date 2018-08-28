@@ -57,21 +57,22 @@ public class 자료구조_DEQUE_KOITP_SlidingWindow {
 		LinkedList<Integer> max = new LinkedList<Integer>();
 			
 		for(int i=1;i<=N;i++){
-			//min
-			while(!min.isEmpty() && arr[min.getLast()] >= arr[i]) min.pollLast();
-			min.addLast(i);//save index
-						
 			//max
-			while(!max.isEmpty() && arr[max.getLast()] <= arr[i]) max.pollLast();
+			while(!max.isEmpty() && arr[max.getLast()] <= arr[i]) max.pollLast(); //최대값 갱신 - 최대값은 마지막 idx
 			max.addLast(i);//save index
 			
+			//min
+			while(!min.isEmpty() && arr[min.getLast()] >= arr[i]) min.pollLast(); //최소값 갱신 - 최소값은 마지막 idx
+			min.addLast(i);//save index
+	
 			//sum
 			sum += arr[i];
 			
 			if(i>=K){
+				
 				sum = sum - arr[i-K];
 				//arrange adv. nums
-				while(min.getFirst() <= i-K) min.pollFirst();
+				while(min.getFirst() <= i-K) min.pollFirst();//min의 idx가 i-K보다 같거나 작으면 현재 체크하는 영역이 아니므로 제거
 				while(max.getFirst() <= i-K) max.pollFirst();
 				//System.out.println(arr[min.getFirst()] + " "+ arr[max.getFirst()]+" "+sum);
 				bw.write(arr[min.getFirst()] + " "+ arr[max.getFirst()]+" "+sum + "\n");

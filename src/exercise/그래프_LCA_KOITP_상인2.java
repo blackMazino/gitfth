@@ -70,9 +70,9 @@ public class 그래프_LCA_KOITP_상인2 {
 		//Sparase table
 		for(int k=0;k<Max;k++){
 			for(int n=1;n<=N;n++){
-				parent[k+1][n] = parent[k][ parent[k][n] ];//n의 2^(k+1)번째 조상은 = 그조상의 2^k번째 조상과 같다
+				parent[k+1][n] = parent[k][ parent[k][n] ];//n의 2^(k+1)번째 조상 = (n의 k번째 조상의) 2^k번째 조상과 같다
 			}
-		}
+		}		
 		
 		answer = 0;
 		for(int i=1;i<N;i++){
@@ -86,7 +86,7 @@ public class 그래프_LCA_KOITP_상인2 {
 
 	private static void dfsForLCA(int cur, int d, int p) {
 		depth[cur] = d;
-		parent[0][cur] = p;
+		parent[0][cur] = p;//2^0 즉 바로위 조상
 		visited[cur] = true;
 		for(int next:con[cur]){
 //			if(next != p){
