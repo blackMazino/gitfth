@@ -8,7 +8,8 @@ import java.util.StringTokenizer;
 //DP
 public class Day4_01_DP_막대기자르기 {
 /*
-길이가 N인 막대기가 있다. 막대기를 길이가 자연수가 되도록 여러 조각으로 자를 수 있다. 각 길이에 대해 값어치가 있을 때, 값어치 합이 최대가 되도록 막대기를 자르자.
+길이가 N인 막대기가 있다. 막대기를 길이가 자연수가 되도록 여러 조각으로 자를 수 있다. 
+각 길이에 대해 값어치가 있을 때, 값어치 합이 최대가 되도록 막대기를 자르자.
 
 예를 들어, 길이가 4인 막대기가 있고 각 길이 별 값어치가 아래와 같다고 하자.
 |  length  | 1 | 2 | 3 | 4 |
@@ -55,27 +56,27 @@ i번째로 주어지는 수는 길이가 i인 막대기의 값어치를 의미�
 			 * D[i] = max(현재까지의 값 , 직전+현재길의 cost)
 			 * */
 			
-//			D = new int[N+1];
-//			for(int i=1;i<=N;i++){
-//				for(int j=1;j<=i;j++){
-//					D[i] = Math.max(D[i], D[i-j]+cost[j]);
-//				}
-//			}
-//			System.out.println(D[N]);
-			
-			
-			int revenue = 0;
-			int []r = new int [N+1];
-			r[0] = 0;
+			D = new int[N+1];
 			for(int i=1;i<=N;i++){
 				for(int j=1;j<=i;j++){
-					if(revenue < cost[j] + r[i-j]){
-						revenue = cost[j] + r[i-j];
-					}					
+					D[i] = Math.max(D[i], D[i-j]+cost[j]);
 				}
-				r[i] = revenue;	
 			}
-			System.out.println(revenue);
+			System.out.println(D[N]);
+			
+			
+//			int revenue = 0;
+//			int []r = new int [N+1];
+//			r[0] = 0;
+//			for(int i=1;i<=N;i++){
+//				for(int j=1;j<=i;j++){
+//					if(revenue < cost[j] + r[i-j]){
+//						revenue = cost[j] + r[i-j];
+//					}					
+//				}
+//				r[i] = revenue;	
+//			}
+//			System.out.println(revenue);
 //			System.out.println("#"+tc+"");
 //		}
 		br.close();

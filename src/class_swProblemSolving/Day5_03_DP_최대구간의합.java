@@ -51,7 +51,7 @@ N이 주어진다. (1≤N≤1,000,000)두 번째 줄에 크기 N인 정수 배�
 			D = new long [N+1];
 			long max = Long.MIN_VALUE;
 			for(int i=1;i<=N;i++){
-				D[i] = Math.max(D[i-1], 0) + A[i];
+				D[i] = Math.max(D[i-1], 0) + A[i];//계산한 값이 0보다 작으면 자르고 간다.(0보다 크면 안고 가는게 이득)
 				max = Math.max(max, D[i]);
 			}
 			System.out.println(max);
