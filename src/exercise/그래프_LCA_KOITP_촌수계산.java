@@ -39,6 +39,87 @@ https://koitp.org/problem/SDS_PRO_4_4/read/
 
 3
 */
+	
+	
+	static int N,A,B,M;
+	static ArrayList<Integer>[] con;
+	static int[] parent, depth;
+	static boolean [] isRoot;
+	static boolean [] visited;
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		st = new StringTokenizer(br.readLine());
+		
+		N = Integer.parseInt(st.nextToken());
+		con = new ArrayList[N+1];
+		depth = new int [N+1];
+		visited = new boolean [N+1];
+		parent = new int [N+1];
+		isRoot =  new boolean [N+1];
+		//Initialize
+		for(int i=1;i<=N;i++){
+			con[i] = new ArrayList<Integer>();
+			isRoot[i] = true;
+		}
+		
+		st = new StringTokenizer(br.readLine());
+		A = Integer.parseInt(st.nextToken());
+		B = Integer.parseInt(st.nextToken());
+		st = new StringTokenizer(br.readLine());
+		M = Integer.parseInt(st.nextToken());
+		
+		for(int i=1;i<=M;i++){
+			st = new StringTokenizer(br.readLine());
+			int d = Integer.parseInt(st.nextToken());
+			int s = Integer.parseInt(st.nextToken());
+			con[d].add(s);			
+			isRoot[s] = false;
+		}
+		for(int i=1;i<=N;i++){
+			if(isRoot[i]){//연결이 안되어 있을수도 있으므로, isRoot가  true인것 기준으로 tree를 만들자
+				dfs(i);
+			}
+		}
+		int c = getLca(A,B);
+		System.out.println(c==0?-1:depth[A]+depth[B]-2*depth[c]);
+	}
+	
+	private static int getLca(int a, int b) {
+		int result = 0;
+		boolean [] visA = new boolean[N+1];
+		int tmp = a;
+		while(tmp>0){
+			visA[tmp] = true;
+			tmp = parent[tmp];			
+		}
+		tmp = b;
+		while(tmp>0){
+			if(visA[tmp]){
+				result = tmp;
+				break;
+			}
+			tmp = parent[tmp];
+		}
+		return result;
+	}
+
+	private static void dfs(int i) {
+		visited[i] = true;
+		for(int n:con[i]){
+			if(!visited[n]){
+				visited[n] = true;
+				parent[n] = i;
+				depth[n] = depth[i]+1;
+				dfs(n);
+			}
+		}
+		
+	}
+
+}
+
+/*	
 	static int N,A,B,M;
 	static ArrayList<Integer>[] con;
 	static boolean visited[];
@@ -124,3 +205,4 @@ https://koitp.org/problem/SDS_PRO_4_4/read/
 	}
 
 }
+*/
