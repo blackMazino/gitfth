@@ -3,7 +3,7 @@ package class_swProblemSolving;
 import java.io.*;
 import java.util.*;
  
-public class DayAnother_02Graph_babelSort{
+public class DayAnother_02DP_babelSort{
     static int N;
     static int[] A, to;
     static Integer[] B;

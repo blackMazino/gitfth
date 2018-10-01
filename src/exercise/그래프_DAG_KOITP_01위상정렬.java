@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class 그래프_DAG_KOITP_위상정렬 {
+public class 그래프_DAG_KOITP_01위상정렬 {
 
 /*
 DAG(Directed Acyclic Graph)는 방항셩이 있는 간선으로 이루어진 그래프 중, 사이클이 없는 그래프를 의미한다. DAG에서는 위상 정렬을 항상 할 수 있다.

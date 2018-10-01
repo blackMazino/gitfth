@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 //상인 방법 LCA
@@ -30,8 +31,7 @@ public class 그래프_LCA_KOITP_촌수계산2 {
 		for(int i=1;i<=N;i++){
 			con[i] = new ArrayList<Integer>();
 			isRoot[i] = true;
-			depth[i] = 1;
-		}
+		}		
 
 		st = new StringTokenizer(br.readLine());
 		A = Integer.parseInt(st.nextToken());
@@ -48,6 +48,7 @@ public class 그래프_LCA_KOITP_촌수계산2 {
 		}
 		for(int i=1;i<=N;i++){
 			if(isRoot[i]){//연결이 안되어 있을수도 있으므로, isRoot가  true인것 기준으로 tree를 만들자
+				visited[i] = true;
 				dfs(i);
 			}
 		}
@@ -59,6 +60,7 @@ public class 그래프_LCA_KOITP_촌수계산2 {
 		int c = getLca(A,B);
 		System.out.println(c==0?-1:depth[A]+depth[B]-2*depth[c]);
 	}
+	
 	private static int getLca(int a, int b) {
 		if(depth[a] < depth[b]) return getLca(b,a);
 		int d = depth[a] - depth[b];
@@ -74,11 +76,11 @@ public class 그래프_LCA_KOITP_촌수계산2 {
 				b = parent[i][b];
 			}
 		}
-		return parent[0][a] == parent[0][b] ? parent[0][a]:0;	
+//		return parent[0][a] == parent[0][b] ? parent[0][a]:0;
+		return parent[0][a];//a,b가 같은 tree가 아니라면 어차피 0이 return
 	}
 	
-	private static void dfs(int i) {
-		visited[i] = true;
+	private static void dfs(int i) {	
 		for(int n:con[i]){
 			if(!visited[n]){
 				visited[n] = true;

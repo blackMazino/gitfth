@@ -13,11 +13,16 @@ public class DayAnother_01Graph_cowParty{
         boolean[] vis = new boolean[N+1];
         dist[s] = 0;
         for (int i=1;i<=N;i++){
-            int t = 0;
-            for (int j=1;j<=N;j++) if (!vis[j] && dist[t] > dist[j]) t = j;
+
+        	int t = 0;
+            for (int j=1;j<=N;j++) {
+            	if (!vis[j] && dist[t] > dist[j]) t = j;//처음 t=X;
+            }
             vis[t] = true;
-            for (int j=1;j<=N;j++) if (w[t][j] < Integer.MAX_VALUE){
-                dist[j] = Math.min(dist[j], dist[t] + w[t][j]);
+            for (int j=1;j<=N;j++) {
+            	if (w[t][j] < Integer.MAX_VALUE){
+            		dist[j] = Math.min(dist[j], dist[t] + w[t][j]);
+            	}
             }
         }
     }

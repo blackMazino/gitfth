@@ -1,6 +1,13 @@
 package exercise;
 
-public class 그래프_DAG_KOITP_임계경로 {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.StringTokenizer;
+
+public class 그래프_DAG_KOITP_02임계경로 {
 /*
 https://koitp.org/problem/CRITICAL_PATH/read/
 	
@@ -8,6 +15,15 @@ https://koitp.org/problem/CRITICAL_PATH/read/
 공정을 정점으로, 작업 관계를 방향성 간선으로 표현했을 때, 아래와 같은 그림이 된다:
 
 그림 1
+1->2
+1->4
+1->3
+2->7
+2->6
+4->6
+3->5
+6->7
+5->6
 
 위 그림에서 1번 공정에서 작업이 시작되어 2번, 3번, 4번 공정에 작업한 결과물을 보낸다. 
 작업한 결과물을 보내는데 걸리는 시간은 간선 가중치와 동일하며, 각 공정에서 작업하는데 걸리는 시간은 무시할 수 있을 만큼 작다. 
@@ -41,9 +57,58 @@ https://koitp.org/problem/CRITICAL_PATH/read/
 
 12
 */	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	static int N,M;
+	static int[]d, indegree;
+	static ArrayList<Integer>[] con,conW;
+	public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        
+        indegree = new int[N+1];
+        con = new ArrayList[N+1];
+        conW = new ArrayList[N+1];
+        for(int i=1;i<=N;i++){
+        	con[i] = new ArrayList<>(); 
+        	conW[i] = new ArrayList<>();
+        }
+        
+        for(int i=1;i<=M;i++){
+        	st = new StringTokenizer(br.readLine());
+        	int a = Integer.parseInt(st.nextToken());
+        	int b = Integer.parseInt(st.nextToken());
+        	int c = Integer.parseInt(st.nextToken());
+        	con[a].add(b);
+        	conW[a].add(c);
+        	indegree[b]++;
+        }
+        d = new int[N+1];
+        topologicalSortByStack();        
+	}
+	private static void topologicalSortByStack() {
+		LinkedList<Integer> stack = new LinkedList<>();
+		
+		for(int i=1;i<=N;i++){
+			if(indegree[i]==0){
+				stack.addLast(i);
+			}
+		}
+		
+		while(!stack.isEmpty()){
+			int s = stack.removeLast();
+			for(int i=0;i<con[s].size();i++){
+				int e = con[s].get(i);
+				int c = conW[s].get(i);
+				indegree[e]--;
+				if(indegree[e]==0){
+					stack.addLast(e);
+				}
+				d[e] = Math.max(d[e], d[s]+c);
+			}
+			
+		}
+		System.out.println(d[N]);
 	}
 
 }

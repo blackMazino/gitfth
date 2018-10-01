@@ -114,15 +114,15 @@ E는 유령선의 구명보트 위치를 나타낸다
 		
 		System.out.println(d[ey][ex]==Integer.MAX_VALUE?-1:d[ey][ex]);
 	}
-	private static void search(int x, int y, shipLoc temp) {
+	private static void search(int x, int y, shipLoc from) {
 		//좌표계 안일 경우에만
 		if(x>=1 && x<=W && y>=1 && y<=H){
 			if(g[y][x] !='X' && !visited[y][x]){//X, 방문한곳은 skip
 			
 				if(g[y][x] == 'E'){
-					d[y][x]= Math.min(d[temp.y][temp.x]+1, d[y][x]);
+					d[y][x]= Math.min(d[from.y][from.x]+1, d[y][x]);
 				}else{
-					d[y][x]= d[temp.y][temp.x]+1;
+					d[y][x]= d[from.y][from.x]+1;
 				}				
 				visited[y][x] = true;
 				que.add(new shipLoc(x,y));				

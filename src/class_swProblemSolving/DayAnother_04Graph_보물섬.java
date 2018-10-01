@@ -14,13 +14,19 @@ public class DayAnother_04Graph_보물섬 {
         boolean[] vis = new boolean[N+1];
         for (int i=1;i<=N;i++){
             int t = 0;
-            for (int j=1;j<=N;j++) if (!vis[j] && dist[t] > dist[j]) t = j;
+            for (int j=1;j<=N;j++) {
+            	if (!vis[j] && dist[t] > dist[j]) {
+            		t = j;
+            	}
+            }
             // t가 확정
             vis[t] = true;
-            for (int j=1;j<=N;j++) if (w[t][j] < Integer.MAX_VALUE && !vis[j]){
-                if (dist[j] > dist[t] + w[t][j]){
-                    dist[j] = dist[t] + w[t][j];
-                }
+            for (int j=1;j<=N;j++) {
+            	if (w[t][j] < Integer.MAX_VALUE && !vis[j]){
+            		if (dist[j] > dist[t] + w[t][j]){
+                        dist[j] = dist[t] + w[t][j];
+                    }
+            	}
             }
         }
     }

@@ -153,7 +153,7 @@ public class source {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		
+//		System.out.println(Math.pow(2, 17));
 		N = Integer.parseInt(st.nextToken());
 		st = new StringTokenizer(br.readLine());
 		M = Integer.parseInt(st.nextToken());

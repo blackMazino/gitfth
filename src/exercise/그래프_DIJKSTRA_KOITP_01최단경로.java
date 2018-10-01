@@ -11,6 +11,8 @@ import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 /*
+https://koitp.org/problem/SHORTEST_PATH/read/
+
 N 개의 도시가 있다. 각 도시는 1번부터N번까지 번호가 매겨져있다. 
 그리고 서로 다른 두 도시를 잇는 M개의 도로가 있다. 도로마다 길이가 다를 수 있으며, 
 어떠한 두 도시는 여러 개의 도로로 이어져 있을 수 있다.
@@ -20,7 +22,7 @@ N 개의 도시가 있다. 각 도시는 1번부터N번까지 번호가 매겨�
 단, 조금이라도 빨리 명우를 보고 싶어하는 마음에 최대한 빠르게 이동하려고 한다.
 
 태양이를 도와 1번 도시에서 N번 도시로 가는 최단 거리를 구하는 프로그램을 작성하시오.
-
+ 
 입력
 입력의 첫 줄에 도시의 수를 나타내는 자연수 N과 도로의 개수를 나타내는 정수M
 이 공백으로 구분되어 주어진다. (1≤N≤100,000, 0≤M≤300,000)
@@ -51,7 +53,7 @@ N 개의 도시가 있다. 각 도시는 1번부터N번까지 번호가 매겨�
 
 -1
 */
-public class 그래프_DIJKSTRA_KOITP_최단경로 {
+public class 그래프_DIJKSTRA_KOITP_01최단경로 {
 
 	static int N,M;
 	static long d[];
@@ -82,12 +84,23 @@ public class 그래프_DIJKSTRA_KOITP_최단경로 {
 			conW[a].add(c); conW[b].add(c);
 		}
 		
-		PriorityQueue<long[]> pQ = new PriorityQueue<>(10, new Comparator<long[]>(){
+//		PriorityQueue<long[]> pQ = new PriorityQueue<>(10, new Comparator<long[]>(){
+//
+//			@Override
+//			public int compare(long[] o1, long[] o2) {
+//				// TODO Auto-generated method stub
+//				return ( (o1[0] - o2[0])>0 ? 1 : -1 );
+//			}
+//			 
+//		});
+		PriorityQueue<long[]> pQ = new PriorityQueue<>(new Comparator<long[]>(){
 
 			@Override
 			public int compare(long[] o1, long[] o2) {
 				// TODO Auto-generated method stub
-				return ( (o1[0] - o2[0])>0 ? 1 : -1 );
+				//return ( (o1[0] - o2[0])>0 ? 1 : -1 );
+				return Long.compare( o1[0] , o2[0] );
+				
 			}
 			 
 		});

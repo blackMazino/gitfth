@@ -1,6 +1,6 @@
 package exercise;
 
-public class 그래프_01_KOITP_바벨정렬 {
+public class DP_KOITP_바벨정렬 {
 /*	
 https://koitp.org/problem/SDS_PRO_4_7/read/
 
@@ -33,6 +33,8 @@ https://koitp.org/problem/SDS_PRO_4_7/read/
 1 2 3 : 1과 2의 위치를 바꿈 (3 = 1 + 2)
 따라서 들어올리는 무게의 합은 7이며, 이때가 최소이다
 */	
+	
+	static int N;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
