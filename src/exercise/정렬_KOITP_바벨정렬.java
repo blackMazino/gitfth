@@ -1,6 +1,6 @@
 package exercise;
 
-public class DP_KOITP_바벨정렬 {
+public class 정렬_KOITP_바벨정렬 {
 /*	
 https://koitp.org/problem/SDS_PRO_4_7/read/
 
