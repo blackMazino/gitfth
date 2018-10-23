@@ -1,0 +1,186 @@
+2/6 화
+탐색 nQueen
+정렬 가장많은 수
+정렬 지은이가 지은집
+3/13 화
+자료구조 동맹의동맹은 동맹
+자료구조 탑
+자료구조 중앙값(안품..)
+4/6
+그래프 LCA
+그래프 그래프순회
+4/10 
+자료구조 동맹의동맹은동맹
+기출문제 우주전함(문제만 적음)
+4/16
+BFS, DFS 복습
+DP 폐지줍기
+4/25
+탐색 nQueen
+정렬 지은이가 지은집
+자료구조 탑
+
+5/10
+그래프 고속도로건설
+5/14
+그래프 고속도로건설(계속)
+그래프 군사도로망
+5/18
+그래프 군사도로망
+자료구조 slidingWindow
+정리
+그래프순회,탑,동맹의동맹은동맹(풀어보기!)
+상인
+6/21
+그래프순회 풀기.
+동맹의동맹은동맹 풀기
+LCA 풀기
+6/22
+상인
+6/29
+상인 비트연산자 제거, LCA 고급로직 이해
+7/16
+주식 복기
+7/17
+stack(탑)
+7/18
+비트연산자 제거 LCA
+7/19
+비트연산자 제거 LCA
+comparator 암기(MST)
+7/20
+DAG-위상정렬(다양한 풀이)
+7/21
+BFS, DFS, LCA, MST
+7/31
+kakao 코딩테스트(fail) review
+8/1
+위상정렬 
+
+8/3
+BFS, DFS, LCA, MST
+comparator 암기(MST)
+
+8/9
+중앙값(MaxHeap MinHeap)
+
+8/13
+워프(그래프,DP)
+8/14 
+못함
+8/16
+최단경로(Dijkstra)
+
+8/21
+웜홀(BellmanFord)
+8/22
+BellmanFord
+유령선, 가장 먼 두도시
+8/23(반영일)
+워프, 최단경로(comparator로 풀어보기), 웜홀 복습
+
+8/24
+BFS, DFS, LCA, MST
+comparator 암기(MST)
+8/25
+BFS, DFS, LCA, MST
+comparator 암기(MST)
+
+8/28
+유령선
+
+8/29
+
+8/30
+가장 먼 두도시, 웜홀 복습
+워프, 최단경로(comparator로 풀어보기),
+
+8/31
+dijksta, bellman-ford, Floyd-Warchell 이론, 다른문제
+
+
+9/3
+X
+9/4
+X
+9/6
+
+9/7
+BFS, DFS, LCA, MST
+comparator 암기(MST)
+
+9/11
+촌수계산, LCA 정리
+
+9/14
+DP 최대구간합. Dijkstra cowparty(못품)
+
+9/15
+DAG 임계경로
+Bellman-Ford 웜홀
+FloydWarshell 가장먼두점
+Dijkstra 보물섬
+MST 군사도로망
+LCA 상인(보편적인 풀이)
+
+
+9/20
+BFS응용 피크닉
+
+10/1
+cowParty
+
+10/4 
+dijkstra의 2가지 풀이법 : 이차원배열을 O(V2) 풀이법, ArrayList+우선순위큐를 이용한 O(E log(V))풀이법
+보물섬, cowParty를 우선순위 큐방법으로 풀어보자
+
+10/10
+dijkstra 2가지 풀이법 : 보물섬
+
+10/11
+그래프 복습
+
+
+10/18
+바벨정렬-모르겠다 으아...바보인건가..
+
+
+10/23
+피크닉-BFS,DFS
+임계경로 - topologicalSort
+
+10/24
+웜홈-bellmanFord, 가장먼 두도시 - FloydWarshell 복슴
+다른문제 찾아보기
+
+
+10/25
+최단경로, 보물섬, cowparty - Dijstra
+
+10/26
+상인, 촌수계산 - LCA
+고속도로건설,군사도로망 -  MST
+
+10/27(시험일)
+
+
+추가그래프중에 못푼것
+cowParty 이해를 못함..
+barbelSort -DP
+=========To-DO===========
+* bellmanFord, FloydWarshell 다른문제 찾아보기
+ - 사전문제 인터스텔라(문제복붙필요)
+* indexedTree - 구간합!!!
+* DP LCS, LIS
+* ccw, convexHull, 사전문제 4개점(문제복붙필요)
+dijkstra 보물섬, cowparty 이해하기
+
+
+
+
+
+*그래프 - 위상정렬_DAG(다양한풀이, stack, que..), Dijkstra
+//DAG X 모든 두 정점 -> FloydWarshell
+//DAG X(cycle이 있을 수 있다), 음수가 있을수 있음 -> Bellman-Ford
+//DAG X(cycle이 있을 수 있다), 음수가 없음 -> Dijkstra
+//DAG X(cycle이 있을 수 있다), 음수가 없음, 모든가중치가 동일 -> DFS,BFS

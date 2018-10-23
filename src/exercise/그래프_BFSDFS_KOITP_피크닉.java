@@ -41,7 +41,7 @@ K+2번째 줄부터 M+K+1번째 줄까지는 단방향 도로의 정보 시작�
 	static int [] cow;
 	static ArrayList<Integer>[] path;
 	static ArrayList<CowCount> list;
-	static int [][] relation;
+//	static int [][] relation; //ArrayList 사용
 	static boolean [] tmp;
 	public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader( new InputStreamReader(System.in ) );        	
@@ -60,7 +60,7 @@ K+2번째 줄부터 M+K+1번째 줄까지는 단방향 도로의 정보 시작�
         path = new ArrayList [N+1];
         list = new ArrayList<>();
         tmp = new boolean[N+1];
-        list.add(new CowCount(0,tmp));
+        list.add(new CowCount(0,tmp));//0번째
         for(int i =1;i<=N;i++){
         	path[i] = new ArrayList<>();
         	tmp = new boolean[N+1];
@@ -72,7 +72,7 @@ K+2번째 줄부터 M+K+1번째 줄까지는 단방향 도로의 정보 시작�
         	int e = Integer.parseInt(st.nextToken());
         	path[s].add(e);//단방향
         }	
-        relation = new int [N+1][K+1];//N개 목초지, 0번 idx에는 다녀간 소들의 합, 1~K번 소가 다녀갔는지, 다녀갔다면 1, 아니면 0
+//        relation = new int [N+1][K+1];//N개 목초지, 0번 idx에는 다녀간 소들의 합, 1~K번 소가 다녀갔는지, 다녀갔다면 1, 아니면 0
         
         int answer = 0;
         for(int i=1;i<=K;i++){//소를 이동시켜보자

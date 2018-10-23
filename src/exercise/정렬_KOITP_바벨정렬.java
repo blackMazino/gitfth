@@ -1,5 +1,12 @@
 package exercise;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.StringTokenizer;
+
 public class 정렬_KOITP_바벨정렬 {
 /*	
 https://koitp.org/problem/SDS_PRO_4_7/read/
@@ -35,9 +42,54 @@ https://koitp.org/problem/SDS_PRO_4_7/read/
 */	
 	
 	static int N;
-	public static void main(String[] args) {
+	static int[] A;
+	static Integer [] B;
+	static int[] toBe;
+	static boolean[] visited;
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		st = new StringTokenizer(br.readLine());
+		N = Integer.parseInt(st.nextToken());
+		A = new int[N+1];
+		B = new Integer[N+1];
+		for(int i=1;i<=N;i++){
+			st = new StringTokenizer(br.readLine());
+			A[i] = Integer.parseInt(st.nextToken());
+			B[i] = i;
+		}
+		//idx들을 A의 오름차순대로 정렬한다
+		Arrays.sort(B, 1, N+1, new Comparator<Integer>(){
 
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				// TODO Auto-generated method stub
+				return A[o1]-A[o2]; //desc;
+			}
+			
+		});
+		/*
+		 * idx val            idx  val
+		 * 1   2              3    1   
+		 * 2   3      ---->   1    2
+		 * 3   1              2    3
+		 * 		
+		 * */
+		
+		
+		toBe = new int[N+1];
+		for(int i=1;i<=N;i++) toBe[B[i]] = i;
+		/*  idx(B) val(A) toBe
+		 *  3      1      2
+		 *  1      2      3
+		 *  2      3      1
+		 * 
+		 * */
+		visited = new boolean[N+1];
+		
+		
+		
 	}
 
 }
