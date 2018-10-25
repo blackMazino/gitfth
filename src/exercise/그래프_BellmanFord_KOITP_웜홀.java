@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 /*
+https://koitp.org/problem/USACO_2016DEC_WORMHOLES/read/
 그의 많은 농장들을 탐험하던중, 존은 몇 개의 놀라운 웜홀을 발견했다. 
 웜홀은 현재 농장에서 다른 농장으로의 이상한 단방향 통로로써 당신이 들어갔던 시간보다 이전시간으로 시간을 되돌린다. 
 존의 농장은 N개의 농장과 M개의 양방향 도로, W개의 웜홀로 구성되어있다. 
@@ -24,6 +25,7 @@ import java.util.StringTokenizer;
 각 테스트 케이스의 두 번째 줄부터 M개의 줄에 걸쳐 양방향 도로의 정보 s, e, t가 공백으로 분리되어 주어진다. 
 s, e는 해당 도로가 잇는 지점의 번호, t는 해당 도로를 통해 이동하는데 걸리는 시간을 의미한다. 
 (1 ≤ s, e ≤ N, 1 ≤ t ≤ 10,000)
+
 
 각 테스트 케이스의 (M + 2) 번째 줄부터 W개의 줄에 걸쳐 웜홀의 정보 s, e, t가 공백으로 분리되어 주어진다. 
 s는 해당 웜홀의 시작지점, e는 해당 웜홀의 도착 지점, t는 줄어드는 시간을 의미한다. 
@@ -103,6 +105,7 @@ public class 그래프_BellmanFord_KOITP_웜홀 {
 			dist = new int[N+1];
 			isUpdate = false;//초기화
 			for(int i=1;i<=N;i++){
+/*				
 //				boolean a = false;
 				isUpdate = false;
 				for(Edge e : edge){
@@ -116,6 +119,17 @@ public class 그래프_BellmanFord_KOITP_웜홀 {
 //					break;
 //				}
 				if(!isUpdate) break; //갱신할게 없다면 또는 모두 갱신했다면
+*/				
+				
+				for(Edge e : edge){
+					if(dist[e.e]>dist[e.s]+e.t){//웜홀(음수)인경우 성립된다
+						dist[e.e]=dist[e.s]+e.t;
+						if(i==N){
+							isUpdate = true;
+							break;
+						}
+					}
+				}								
 			}
 			//System.out.println(isStop? "NO":"YES");
 			System.out.println(isUpdate? "YES":"NO");

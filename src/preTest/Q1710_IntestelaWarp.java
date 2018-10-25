@@ -3,6 +3,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -89,8 +91,11 @@ public class Q1710_IntestelaWarp{
                     }
 				}			
 			}
+				
+			
 			//conclusion
 			int totTime = BellmanFord();
+			printP();
             if(mininf){
 					System.out.println("#"+tc+" mininf");	
             }else{
@@ -104,7 +109,19 @@ public class Q1710_IntestelaWarp{
 		br.close();
 	}
 
-		
+	
+
+
+	private static void printP() {
+		// TODO Auto-generated method stub
+		for(int [] tmp : g){
+			System.out.println(tmp[0]+","+tmp[1]+","+tmp[2]);
+		}
+	}
+
+
+
+
 	private static int BellmanFord() {
 		int result = Integer.MAX_VALUE;
 		int sizeOfAllNodes =X*Y; 
