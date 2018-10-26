@@ -149,5 +149,6 @@ class Edge3 implements Comparable<Edge3>{
 	@Override
 	public int compareTo(Edge3 o) {
 		return Long.compare(time, o.time);
+//		return (int) (time-o.time);
 	}
 }

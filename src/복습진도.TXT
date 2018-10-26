@@ -150,19 +150,19 @@ dijkstra 2가지 풀이법 : 보물섬
 임계경로 - topologicalSort
 
 10/24
-웜홈-bellmanFord, 가장먼 두도시 - FloydWarshell 복슴
-다른문제 찾아보기
-
+X
 
 10/25
-최단경로, 보물섬, cowparty - Dijstra
+BellmanFord - (사전문제)인터스텔라 워프
 
 10/26
+최단경로, 보물섬, cowparty - Dijstra 
+임계경로 - topologicalSort
 상인, 촌수계산 - LCA
 고속도로건설,군사도로망 -  MST
 
 10/27(시험일)
-임계경로 - topologicalSort
+
 
 
 추가그래프중에 못푼것

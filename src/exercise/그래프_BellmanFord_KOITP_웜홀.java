@@ -106,7 +106,6 @@ public class 그래프_BellmanFord_KOITP_웜홀 {
 			isUpdate = false;//초기화
 			for(int i=1;i<=N;i++){
 /*				
-//				boolean a = false;
 				isUpdate = false;
 				for(Edge e : edge){
 					if(dist[e.e]>dist[e.s]+e.t){//웜홀(음수)인경우 성립된다
@@ -114,10 +113,6 @@ public class 그래프_BellmanFord_KOITP_웜홀 {
 						isUpdate = true;
 					}
 				}
-//				if(!a){
-//					isStop = true;
-//					break;
-//				}
 				if(!isUpdate) break; //갱신할게 없다면 또는 모두 갱신했다면
 */				
 				
@@ -131,11 +126,7 @@ public class 그래프_BellmanFord_KOITP_웜홀 {
 					}
 				}								
 			}
-			//System.out.println(isStop? "NO":"YES");
 			System.out.println(isUpdate? "YES":"NO");
-			
-			
-			
 		}
 	}
 
