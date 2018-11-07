@@ -40,7 +40,7 @@ K+2번째 줄부터 M+K+1번째 줄까지는 단방향 도로의 정보 시작�
 	static int K,N,M;
 	static int [] cow;
 	static ArrayList<Integer>[] path;
-	static ArrayList<CowCount> list;
+	static ArrayList<CowCount> list;//각 목초지에서의 정보들
 //	static int [][] relation; //ArrayList 사용
 	static boolean [] tmp;
 	public static void main(String[] args) throws Exception {

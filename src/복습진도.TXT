@@ -154,6 +154,7 @@ X
 
 10/25
 BellmanFord - (사전문제)인터스텔라 워프
+RGB Distance - DP
 
 10/26
 최단경로, 보물섬, cowparty - Dijstra 
@@ -162,8 +163,20 @@ BellmanFord - (사전문제)인터스텔라 워프
 고속도로건설,군사도로망 -  MST
 
 10/27(시험일)
+상인- LCA
+고속도로건선 - MST
 
 
+11/7
+
+11/8
+MST
+
+11/9
+우범지역
+
+11/10(시험일)
+LCA, MST
 
 추가그래프중에 못푼것
 cowParty 이해를 못함..

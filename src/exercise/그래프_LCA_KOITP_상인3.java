@@ -46,14 +46,14 @@ static int Max = 16;//2^17 - 13만
 		dfs(1);
 		
 		//Sparase table
-		for(int k=0;k<Max;k++){
+		for(int k=0;k<=Max-1;k++){
 			for(int n=1;n<=N;n++){
 				parent[k+1][n] = parent[k][ parent[k][n] ];//n의 2^(k+1)번째 조상 = (n의 k번째 조상의) 2^k번째 조상과 같다
 			}
 		}		
 		
 		answer = 0;
-		for(int i=1;i<N;i++){
+		for(int i=1;i<=N-1;i++){
 			answer += getMovingDay(i,i+1);
 		}
 		bw.write(answer + "\n");
