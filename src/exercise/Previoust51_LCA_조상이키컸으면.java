@@ -1,8 +1,11 @@
 package exercise;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -52,7 +55,6 @@ Single Parent Species(SPS)라는 가상의 인류는 남녀 성별이 없어서,
  
 (출력)
 #1 3 6 10
-
 */
 	static int TC, N, Q, K;
 	static int[] height;
@@ -65,7 +67,9 @@ Single Parent Species(SPS)라는 가상의 인류는 남녀 성별이 없어서,
 	static boolean visited[];
 	static int Max = 16;
 	public static void main(String[] args) throws Exception {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader br = new BufferedReader(new FileReader("src/exercise/Previoust51_Input.txt"));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st;
 		TC = Integer.parseInt(br.readLine());
 		for(int tc=1;tc<=TC;tc++){
@@ -78,7 +82,7 @@ Single Parent Species(SPS)라는 가상의 인류는 남녀 성별이 없어서,
 			depth = new int[N+1];
 			parent = new int [Max+1][N+1];
 			visited = new boolean [N+1];
-			for(int n=1;n<=N;n++) con[n] = new ArrayList<>();
+			for(int n=0;n<=N;n++) con[n] = new ArrayList<Integer>();
 			for(int n=1;n<=N;n++){
 				st = new StringTokenizer(br.readLine());
 				int p = Integer.parseInt(st.nextToken());
@@ -97,7 +101,7 @@ Single Parent Species(SPS)라는 가상의 인류는 남녀 성별이 없어서,
 					parent[k+1][n] = parent[k][parent[k][n]]; 
 				}				
 			}			
-			qList = new ArrayList<>();
+			qList = new ArrayList<int[]>();
 			for(int q=1;q<=Q;q++){
 				st = new StringTokenizer(br.readLine());
 				K = Integer.parseInt(st.nextToken());
@@ -107,23 +111,63 @@ Single Parent Species(SPS)라는 가상의 인류는 남녀 성별이 없어서,
 				}
 				qList.add(t);
 			}
-			
-			
-			
-			
-			String str = "";
-			for(int q=1;q<=Q;q++){
-				str = " "+getMaxHeight(q);
+			bw.write("#"+tc);			
+			for(int q=0;q<Q;q++){
+				bw.write(" ");
+				bw.write(String.valueOf(getMaxHeight(q)));
 			}
-			System.out.println("#"+tc+str);
+			bw.write("\n");
+			bw.flush();
+//			System.out.println("#"+tc+str);
 		}
 	}
 	private static int getMaxHeight(int q) {
-		if(qList.get(q).length==1){
-			return height[qList.get(q)[0]];
-		}
-		return 0;
+		int lca = 0;
+//		if(qList.get(q).length==1){
+//			lca = qList.get(q)[0];
+//		}else{
+			lca = getLca(q);
+//		}		
+		return getMaxValue(lca);
 	}
+	
+	private static int getLca(int q) {
+		int result = qList.get(q)[0];
+		int[] t = qList.get(q);
+		for(int i=0;i<t.length-1;i++){
+			result = lca(result,t[i+1]);
+		}
+		return result;
+	}
+	private static int lca(int a, int b) {
+		if(depth[b] > depth[a]) return lca(b,a);
+		int d = depth[a] - depth[b];
+		int k=0;
+		while(d>0){
+			if(d%2==1) a=parent[k][a];
+			d/=2;
+			k++;
+		}
+		if(a==b) return a;
+		for(int i=Max;i>=0;i--){
+			if(parent[i][a] != parent[i][b]){
+				a=parent[i][a];
+				b=parent[i][b];	
+			}			
+		}		
+		return parent[0][a];
+	}
+	private static int getMaxValue(int lca) {
+		int result = height[lca];
+		for(int i=0;i<=Max;i++){
+			if(parent[i][lca]==0){
+				break;
+			}
+			result = Math.max(result, height[parent[i][lca]]);
+		}
+		return result;
+	}
+	
 	private static void dfs(int i) {
 		for(int n : con[i]){
 			if(!visited[n]){
