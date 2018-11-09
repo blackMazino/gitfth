@@ -168,22 +168,22 @@ RGB Distance - DP
 
 
 11/7
-
+패닉룸2 - fail
 11/8
-MST
-
+SDS MST - fail
 11/9
-우범지역
+조상이 키컸으면, 우범지역
 
 11/10(시험일)
 LCA, MST
+
+인터스텔라(dijkstra), 우범지역
 
 추가그래프중에 못푼것
 cowParty 이해를 못함..
 barbelSort -DP
 =========To-DO===========
 * bellmanFord, FloydWarshell 다른문제 찾아보기
- - 사전문제 인터스텔라(문제복붙필요)
 * indexedTree - 구간합!!!
 * DP LCS, LIS
 * ccw, convexHull, 사전문제 4개점(문제복붙필요)
