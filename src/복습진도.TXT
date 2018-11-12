@@ -177,6 +177,9 @@ SDS MST - fail
 11/10(시험일)
 LCA, MST
 
+11/12
+시험복기 - convexHull
+
 인터스텔라(dijkstra), 우범지역
 
 추가그래프중에 못푼것
