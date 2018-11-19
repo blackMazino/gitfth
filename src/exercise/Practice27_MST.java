@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.StringTokenizer;
 
-public class 그래프_MST_SdsPraticeP27_MST {
+public class Practice27_MST {
 
 /*
 (중상) [연습P-0027] MST

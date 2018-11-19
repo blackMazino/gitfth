@@ -12,7 +12,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-public class Previous181110_말뚝 {
+public class 기하_ALL_SdsPre181110_말뚝 {
 /*
 'convex hull'로 볼록껍질을 구하고
 '점의 위치'로 교차여부를 판단하여 안인지 밖인지 확인

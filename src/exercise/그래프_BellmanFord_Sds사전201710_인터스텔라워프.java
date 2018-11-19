@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class 그래프_BellmanFord_SdsPre201710_인터스텔라워프 {
+public class 그래프_BellmanFord_Sds사전201710_인터스텔라워프 {
 
 /*
 가깝고도 먼 미래, 인간은 좀더 편하게 우주 여행을 할 수 있게 되었고, 우주에 대한 호기심 또한 점점 많아졌다. 

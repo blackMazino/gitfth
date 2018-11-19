@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class 기하_CCW_SdsPre201712_4개의점 {
+public class 기하_CCW_Sds사전201712_4개의점 {
 /*
 3차원 공간 직교 좌표계 (x, y, z) 속에 원점을 포함하여 4개의 점이 있다고 하자. 						
 이 4개의 점이 동일 지점에 있는지, 혹은 동일 직선상에 있는지, 혹은 동일 평면상에 있는지를 판단하는 프로그램을 작성하라.						
