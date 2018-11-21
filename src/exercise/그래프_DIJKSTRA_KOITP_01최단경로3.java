@@ -115,6 +115,7 @@ public class 그래프_DIJKSTRA_KOITP_01최단경로3 {
 	}
 
 }
+//class Edge2 implements Comparator<Edge2>{//ClasscastException Occur
 class Edge2 implements Comparable<Edge2>{
 	public Edge2(long distance, int vertex) {
 		this.distance = distance;
@@ -122,15 +123,15 @@ class Edge2 implements Comparable<Edge2>{
 	}
 	long distance;
 	int vertex;
+//	@Override
+//	public int compare(Edge2 o1, Edge2 o2) {		
+//		return (int)(o1.distance-o2.distance);//오름차순
+//	}
 	@Override
 	public int compareTo(Edge2 o) {
 		//return (int)(distance - o.distance);
 		return Long.compare(distance,o.distance);//오름
 	}
-//	@Override
-//	public int compare(Edge2 o1, Edge2 o2) {		
-//		return Long.compare(o1.distance,o2.distance);//오름차순
-//	}
 }
 
 /*
