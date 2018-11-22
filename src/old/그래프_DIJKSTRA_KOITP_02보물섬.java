@@ -1,14 +1,12 @@
-package exercise;
+package old;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-public class 그래프_DIJKSTRA_KOITP_02보물섬2 {
+public class 그래프_DIJKSTRA_KOITP_02보물섬 {
 /*	
 https://koitp.org/problem/SDS_PRO_4_3/read/
 	
@@ -45,9 +43,7 @@ YES
 8
 */
 	static int N,M,T;
-//	static int [][]g;//시작->종료
-	static ArrayList<Integer> con[];
-	static ArrayList<Integer> conW[];
+	static int [][]g;//시작->종료
 	static int [] d1,d2;//way to go, way back
 	public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -56,33 +52,26 @@ YES
         M = Integer.parseInt(st.nextToken());
         st = new StringTokenizer(br.readLine());
         T = Integer.parseInt(st.nextToken());
-//        g = new int [N+1][N+1];        
-//        for(int i=1;i<=N;i++){
-//        	for(int j=1;j<=N;j++){
-//        		g[i][j] = (i==j?0:Integer.MAX_VALUE);//출발=종료인 경우 0
-//        	}
-//        }
-        con = new ArrayList[N+1];
-        conW = new ArrayList[N+1];
-        for(int i=1;i<=N;i++){
-        	con[i]= new ArrayList<>();
-        	conW[i]= new ArrayList<>();
-        }
+        g = new int [N+1][N+1];
         
+        for(int i=1;i<=N;i++){
+        	for(int j=1;j<=N;j++){
+        		g[i][j] = (i==j?0:Integer.MAX_VALUE);//출발=종료인 경우 0
+        	}
+        }
         
         for(int i=1;i<=M;i++){
         	st = new StringTokenizer(br.readLine());
         	int a = Integer.parseInt(st.nextToken());
         	int b = Integer.parseInt(st.nextToken());
         	int c = Integer.parseInt(st.nextToken());
-//        	g[a][b] = Math.min(g[a][b], c);
-        	con[a].add(b);
-        	conW[a].add(c);
+        	g[a][b] = Math.min(g[a][b], c);
         }
         d1 = new int[N+1];
+
+        dijkstra(1, d1);
         d2 = new int[N+1];
-        dijkstraByPq(1, d1);       
-        dijkstraByPq(T, d2);
+        dijkstra(T, d2);
         if(d1[T]==Integer.MAX_VALUE || d2[1]==Integer.MAX_VALUE){
         	System.out.println("NO");
         }else{
@@ -91,64 +80,24 @@ YES
         }
 	}
 	
-	private static void dijkstraByPq(int s, int[] d) {
-		// TODO Auto-generated method stub
+	private static void dijkstra(int s, int [] d){
 		Arrays.fill(d, Integer.MAX_VALUE);
-		d[s]=0;
-		PriorityQueue<Edge3> pQ = new PriorityQueue<>();
-		pQ.add(new Edge3(d[s], s));
-		
-		while(!pQ.isEmpty()){
-			Edge3 e = pQ.poll();
-			int v = e.vertex;
-			long t = e.time;
-			if(d[v] >= t){
-				for(int i=0;i<con[v].size();i++){
-					int thisV = con[v].get(i);
-					int thisT = conW[v].get(i);
-					if(d[thisV] > d[v]+thisT){
-						d[thisV] = d[v]+thisT;
-						pQ.add(new Edge3(d[thisV], thisV));
-					}
+		d[s] = 0;
+		boolean [] visited = new boolean[N+1];
+		for(int i=1;i<=N;i++){
+			int tmp = 0;
+			for(int j=1;j<=N;j++){
+				if(!visited[j] && d[tmp]>d[j]){
+					tmp = j;
+				}
+			}
+			visited[tmp] = true;
+			for(int j=1;j<=N;j++){
+				if(g[tmp][j]<Integer.MAX_VALUE && !visited[j]){
+					d[j]=Math.min(d[j], d[tmp]+g[tmp][j]);			
 				}
 			}
 		}
-		
 	}
 
-//	private static void dijkstra(int s, int [] d){
-//		Arrays.fill(d, Integer.MAX_VALUE);
-//		d[s] = 0;
-//		boolean [] visited = new boolean[N+1];
-//		for(int i=1;i<=N;i++){
-//			int tmp = 0;
-//			for(int j=1;j<=N;j++){
-//				if(!visited[j] && d[tmp]>d[j]){
-//					tmp = j;
-//				}
-//			}
-//			visited[tmp] = true;
-//			for(int j=1;j<=N;j++){
-//				if(g[tmp][j]<Integer.MAX_VALUE && !visited[j]){
-//					d[j]=Math.min(d[j], d[tmp]+g[tmp][j]);			
-//				}
-//			}
-//		}
-//	}
-
-}
-
-class Edge3 implements Comparable<Edge3>{
-	public Edge3(long time, int vertex) {
-
-		this.time = time;
-		this.vertex = vertex;
-	}
-	long time;
-	int vertex;
-	@Override
-	public int compareTo(Edge3 o) {
-		return Long.compare(time, o.time);
-//		return (int) (time-o.time);
-	}
 }

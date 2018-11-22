@@ -32,7 +32,7 @@ N 개의 도시가 있다. 각 도시는 1번부터N번까지 번호가 매겨�
 (1≤a,b≤N,a≠b,1≤c≤106)
 출력
 1번 도시에서N번 도시로 주어진 도로를 통해 이동할 때 최단 거리를 출력한다. 
-만약 이동할 수 없으면 ?1을 출력한다.
+만약 이동할 수 없으면 −1을 출력한다.
 
 6 9
 1 2 2
@@ -53,6 +53,8 @@ N 개의 도시가 있다. 각 도시는 1번부터N번까지 번호가 매겨�
 
 -1
 */
+
+//ArrayList와 Priority Queue를 이용
 public class 그래프_DIJKSTRA_KOITP_01최단경로 {
 
 	static int N,M;
@@ -84,52 +86,52 @@ public class 그래프_DIJKSTRA_KOITP_01최단경로 {
 			conW[a].add(c); conW[b].add(c);
 		}
 		
-//		PriorityQueue<long[]> pQ = new PriorityQueue<>(10, new Comparator<long[]>(){
-//
-//			@Override
-//			public int compare(long[] o1, long[] o2) {
-//				// TODO Auto-generated method stub
-//				return ( (o1[0] - o2[0])>0 ? 1 : -1 );
-//			}
-//			 
-//		});
-		PriorityQueue<long[]> pQ = new PriorityQueue<>(new Comparator<long[]>(){
-
-			@Override
-			public int compare(long[] o1, long[] o2) {
-				// TODO Auto-generated method stub
-				//return ( (o1[0] - o2[0])>0 ? 1 : -1 );
-				return Long.compare( o1[0] , o2[0] );
-				
-			}
-			 
-		});
+		dijkstraByPQ();
 		
-		d[1] = 0;
-//		long [] l = new long[2];
-//		l[0] =0; l[1]=1;
-//		pQ.add(l);
-		pQ.add(new long[] {0,1});//거리값, 정점
-		
-		while(!pQ.isEmpty()){
-			long a = pQ.peek()[1];
-			long b = pQ.peek()[0];
-			pQ.poll();
-			
-			if(d[(int)a] != b) continue;
-			for(int i=0;i<con[(int)a].size();i++){
-				int ti = con[(int)a].get(i);
-				int v = conW[(int)a].get(i);
-				
-				if(d[ti] > d[(int)a] + v){
-					d[ti] = d[(int)a] + v;
-					pQ.add(new long[]{ d[ti], ti });
-				}
-			}		
-		}
 		System.out.println(d[N] < Long.MAX_VALUE ? d[N] : -1);
 	}
 
+	private static void dijkstraByPQ() {
+		d[1] = 0;
+		PriorityQueue<Edge2> pQ = new PriorityQueue<>();
+		pQ.add(new Edge2(d[1],1));
+		
+		while(!pQ.isEmpty()){
+			Edge2 e = pQ.poll();
+			int v = e.vertex;
+			long distance = e.distance;
+			
+			if( d[v] < distance) continue;
+			
+			for(int i=0;i<con[v].size();i++){
+				int thisV = con[v].get(i);
+				int thisD = conW[v].get(i);
+				if(d[thisV] > d[v]+thisD){
+					d[thisV] = d[v] + thisD;
+					pQ.add(new Edge2(d[thisV], thisV));
+				}
+			}
+		}
+	}
+
+}
+//class Edge2 implements Comparator<Edge2>{//ClasscastException Occur
+class Edge2 implements Comparable<Edge2>{
+	public Edge2(long distance, int vertex) {
+		this.distance = distance;
+		this.vertex = vertex;
+	}
+	long distance;
+	int vertex;
+//	@Override
+//	public int compare(Edge2 o1, Edge2 o2) {		
+//		return (int)(o1.distance-o2.distance);//오름차순
+//	}
+	@Override
+	public int compareTo(Edge2 o) {
+		//return (int)(distance - o.distance);
+		return Long.compare(distance,o.distance);//오름
+	}
 }
 
 /*
