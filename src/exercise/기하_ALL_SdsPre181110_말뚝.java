@@ -64,7 +64,6 @@ sample input
 	static P[] arr;
 	static P[] qArr;
 	static LinkedList<Integer> stk;
-	static P t;
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 //		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

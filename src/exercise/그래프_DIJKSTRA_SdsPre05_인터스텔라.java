@@ -106,7 +106,7 @@ public class 그래프_DIJKSTRA_SdsPre05_인터스텔라 {
 				int v = is.v;
 				int w = is.w;
 				
-				if(d[v][w] != dis) continue;
+				if(d[v][w] < dis) continue;
 				
 				if(d[e][w] == dis) break;
 				

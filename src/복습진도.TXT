@@ -203,16 +203,16 @@ LCA, MST
 
 
 
-인터스텔라(dijkstra), 우범지역
+
 
 추가그래프중에 못푼것
 cowParty 이해를 못함..
 barbelSort -DP
 =========To-DO===========
-* bellmanFord, FloydWarshell 다른문제 찾아보기
+* FloydWarshell 다른문제 찾아보기
 * indexedTree - 구간합!!!
 * DP LCS, LIS
-* ccw, convexHull, 사전문제 4개점(문제복붙필요)
+*
 dijkstra 보물섬, cowparty 이해하기
 
 
