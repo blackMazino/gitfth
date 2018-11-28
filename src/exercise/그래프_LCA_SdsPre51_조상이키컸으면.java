@@ -9,7 +9,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class 그래프_LCA_SdsPre51_LCA_조상이키컸으면 {
+public class 그래프_LCA_SdsPre51_조상이키컸으면 {
 
 /*
 
