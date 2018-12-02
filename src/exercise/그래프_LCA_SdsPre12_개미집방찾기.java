@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 public class 그래프_LCA_SdsPre12_개미집방찾기 {
@@ -70,16 +71,21 @@ public class 그래프_LCA_SdsPre12_개미집방찾기 {
 				route[i] = new ArrayList<>();
 			}
 			
+			depth = new int [N+1];
+			parent = new int[Max+1][N+1];
+			visited = new boolean [N+1];
+			
 			for(int n=1;n<=N;n++){
 				st = new StringTokenizer(br.readLine());
 				int p   = Integer.parseInt(st.nextToken());
 				int dir = Integer.parseInt(st.nextToken());
-				int cnt = Integer.parseInt(st.nextToken());				
+				int cnt = Integer.parseInt(st.nextToken());
+				parent[0][n] = p;
 				if(p==0){
 					R=n;
 				}else{
-					con[n].add(p);
 					con[p].add(n);
+//					con[n].add(p);
 				}
 				
 				for(int i=1;i<=cnt;i++){
@@ -88,13 +94,12 @@ public class 그래프_LCA_SdsPre12_개미집방찾기 {
 			}	
 			
 			//LCA PreProcess
-			depth = new int [N+1];
-			parent = new int[Max+1][N+1];
-			visited = new boolean [N+1];
 			depth[R] = 0;
 			parent[0][R] = 0;
 			visited[R] = true;
-			dfs(R);			
+//			dfs(R); stackoverFlow 발생
+			bfs(R);
+			
 			for(int k=0;k<Max;k++){
 				for(int n=1;n<=N;n++){
 					parent[k+1][n] = parent[k][parent[k][n]];
@@ -118,6 +123,17 @@ public class 그래프_LCA_SdsPre12_개미집방찾기 {
 			}
 			System.out.println("#"+tc+" "+answer);
 			
+		}
+	}
+	private static void bfs(int s) {
+		LinkedList<Integer> que = new LinkedList<>();
+		que.add(s);
+		while(!que.isEmpty()){
+			int q = que.poll();
+			for(int n : con[q] ){
+				que.add(n);
+				depth[n] = depth[q] +1;
+			}
 		}
 	}
 	private static void dfs(int i) {

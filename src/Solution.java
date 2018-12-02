@@ -1,5 +1,3 @@
-package exercise;
- 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -12,17 +10,21 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
-/*
+
 //조상이 키컸으면
+/*
 public class Solution {
-	static int TC, N, Q,K;
+	static int TC,N,Q,K;
 	static int H[];
+	static int answer[];
+	static ArrayList<int[]> qList;
 	
-	static int max = 16;
-	static ArrayList<Integer>[] con;
+	//LCA
+	static ArrayList<Integer> con[];
 	static int depth[];
 	static int parent[][];
 	static boolean visited[];
+	static int Max = 16;
 	public static void main(String[] args) throws Exception {
 //		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedReader br = new BufferedReader(new FileReader("src/exercise/Previous51.txt"));
@@ -34,58 +36,60 @@ public class Solution {
 			N = Integer.parseInt(st.nextToken());
 			Q = Integer.parseInt(st.nextToken());
 			
-			con = new ArrayList[N+1];
 			H = new int[N+1];
-			for(int i=0;i<=N;i++){
-				con[i] = new ArrayList<>();
-			}
+			
+			con = new ArrayList[N+1];
+			for(int n=0;n<=N;n++) con[n] = new ArrayList<>();
 			for(int n=1;n<=N;n++){
 				st = new StringTokenizer(br.readLine());
 				int p = Integer.parseInt(st.nextToken());
 				int h = Integer.parseInt(st.nextToken());
-				H[n] = h;
-				con[n].add(p); con[p].add(n);
+				H[n] = p;
+//				parent[0][n] = p;//for BFS
+				con[p].add(n);
+				con[n].add(p);//for BFS
 			}
-			depth = new int[N+1]; 
+			depth = new int[N+1];
+			parent = new int[Max+1][N+1];
+			visited = new boolean [N+1];
+			
 			depth[1] = 1;
-			parent = new int[max+1][N+1];
 			parent[0][1] = 0;
-			visited = new boolean[N+1];
-			visited[1]= true;
+			visited[1] = true;
 			dfs(1);
-			//spars table
-			for(int k=0;k<max;k++){
+			for(int k=0;k<Max;k++){
 				for(int n=1;n<=N;n++){
-					parent[k+1][n] = parent[k][parent[k][n]];
+					parent[k+1][n] = parent[k][ parent[k][n] ];
 				}
 			}
 			
 			bw.write("#"+tc);
-			for(int q=1;q<=Q;q++){
+			for(int q=1;1<=Q;q++){
 				st = new StringTokenizer(br.readLine());
 				K = Integer.parseInt(st.nextToken());
-				int[] tmp = new int[K];
+				int t[] = new int[K];
 				for(int k=0;k<K;k++){
-					tmp[k] = Integer.parseInt(st.nextToken());
+					t[k] =  Integer.parseInt(st.nextToken());
 				}
-				bw.write(" "+String.valueOf(getTallest(tmp)));
+				bw.write(" ");
+				bw.write(String.valueOf(getTallestA(t)));
 			}
 			bw.write("\n");
-			
 		}
 		bw.flush();
+		bw.close();
 	}
-	private static int getTallest(int[] tmp) {
+	private static int getTallestA(int[] t) {
 		int result = 0;
-		int lca = tmp[0];
-		for(int i=0;i<tmp.length-1;i++){
-			lca = getLca(lca,tmp[i+1]); 
+		int lca = t[0];
+		for(int k=1;k<t.length;k++){
+			lca = getLca(lca, t[k+1]);
 		}
 		result = H[lca];
 		while(lca>0){
-			result = Math.max(result, H[ parent[0][lca] ]);
-			lca = parent[0][lca];
-		}
+			result = Math.max(result, H[parent[0][lca]]);
+			lca = parent[0][lca];		
+		}		
 		return result;
 	}
 	private static int getLca(int a, int b) {
@@ -93,132 +97,122 @@ public class Solution {
 		int d = depth[a] - depth[b];
 		int k=0;
 		while(d>0){
-			if(d%2==1){
-				a = parent[k][a];
-			}
+			if(d%2==1) a = parent[k][a];
 			d/=2;
 			k++;
 		}
+		
 		if(a==b) return a;
-		for(int i=max;i>=0;i--){
-			if(parent[i][a] != parent[i][b]){
+		for(int i=Max;i>=0;i++){
+			if(parent[i][a]!=parent[i][b]){
 				a = parent[i][a];
 				b = parent[i][b];
 			}
-		}		
+		}				
 		return parent[0][a];
 	}
 	private static void dfs(int i) {
 		for(int n:con[i]){
 			if(!visited[n]){
+				visited[n] = true;
 				depth[n] = depth[i]+1;
 				parent[0][n] = i;
-				visited[n] = true;
 				dfs(n);
 			}
-		}
-		
+		}		
 	}
 }
 */
-/*
 //최대최소
+/*
 public class Solution {
-	static int TC, N,Q;
-	static int tn;
-	static int [] tree;
-	static long [] maxTree, minTree;
-	static int min, max;
+	
+	static int TC,N,Q,tn;
+	static int[] arr;
+	static long min, max;
+	static long[] minTree, maxTree;
 	public static void main(String[] args) throws Exception {
 //		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedReader br = new BufferedReader(new FileReader("src/exercise/Practice31.txt"));
 		StringTokenizer st;
-		
 		TC = Integer.parseInt(br.readLine());
-		for(int tc=1;tc<=TC;tc++){
+		for (int tc=1;tc<=TC;tc++){
 			st = new StringTokenizer(br.readLine());
 			N = Integer.parseInt(st.nextToken());
 			Q = Integer.parseInt(st.nextToken());
-			
-			tree = new int[N+1];
-			for(tn = 1;tn<N;tn=tn+2);
-			maxTree = new long [212121];	
-			minTree = new long [212121];
+			arr = new int[N+1];
+			for(tn=1;tn<N;tn+=2);
+			minTree = new long[212121];
+			maxTree = new long[212121];
 			Arrays.fill(minTree, Long.MAX_VALUE);
 			
 			st = new StringTokenizer(br.readLine());
-			for(int n=1;n<=N;n++){				
+			for(int n=1;n<=N;n++){
 				int t = Integer.parseInt(st.nextToken());
-				tree[n] = t;
+				arr[n] = t;
 				update(n,t);				
-			}						
-			min = 0;
-			max = 0;
-			for(int q=1;q<=Q;q++){
-				st = new StringTokenizer(br.readLine());
-				int a = Integer.parseInt(st.nextToken());
-				int b = Integer.parseInt(st.nextToken());
-				int c = Integer.parseInt(st.nextToken());
-				if(a==1){
-					tree[b] = c;
-					update(b,c);
-				}else{
-					min += searchMin(b,c);
-					max += searchMax(b,c);
-				}
 			}
 			
+			min = 0;max = 0;
+			for(int q=1;q<=Q;q++){
+				st = new StringTokenizer(br.readLine());
+				int a= Integer.parseInt(st.nextToken());
+				int b= Integer.parseInt(st.nextToken());
+				int c= Integer.parseInt(st.nextToken());
+				if(a==1){
+					arr[b] = c;
+					update(b,c);
+				}else{
+					max += searchMax(b,c);
+					min += searchMin(b,c);
+				}
+			}
 			System.out.println("#"+tc+" "+max+" "+min);
 		}
-				
-	}
-	private static long searchMax(int s, int e) {
-		long result = Long.MIN_VALUE;
-		s = s+tn-1;
-		e = e+tn-1;
-		while(s<=e){
-			if(s%2==1){
-				result = Math.max(result, maxTree[s]);
-				s++;
-			}
-			if(e%2==0){
-				result = Math.max(result, maxTree[e]);
-				e--;
-			}
-			s/=2;
-			e/=2;
-		}	
-		return result;
 	}
 	private static long searchMin(int s, int e) {
 		long result = Long.MAX_VALUE;
-		s = s+tn-1;
-		e = e+tn-1;
+		s = s+tn-1; e=e+tn-1;
 		while(s<=e){
 			if(s%2==1){
 				result = Math.min(result, minTree[s]);
 				s++;
 			}
 			if(e%2==0){
-				result = Math.min(result, minTree[e]);
+				result = Math.min(result, minTree[s]);
 				e--;
 			}
-			s/=2;
-			e/=2;
-		}	
+			s/=2; e/=2;
+		}
+		return result;
+	}
+	private static long searchMax(int s, int e) {
+		long result = 0;
+		s = s+tn-1; e=e+tn-1;
+		while(s<=e){
+			if(s%2==1){
+				result = Math.max(result, maxTree[s]);
+				s++;
+			}
+			if(e%2==0){
+				result = Math.max(result, maxTree[s]);
+				e--;
+			}
+			s/=2; e/=2;
+		}
 		return result;
 	}
 	private static void update(int w, int g) {
+		// TODO Auto-generated method stub
 		for(int i=tn+w-1;i>0;i/=2){
 			if(i==tn+w-1){
 				minTree[i] = g;
 				maxTree[i] = g;
 				continue;
 			}
-			minTree[i] = Math.min(minTree[2*i], minTree[2*i+1]);
-			maxTree[i] = Math.max(maxTree[2*i], maxTree[2*i+1]);			
+			minTree[i] = Math.min(minTree[2*i],minTree[2*1 + 1]);
+			maxTree[i] = Math.max(maxTree[2*i],maxTree[2*1 + 1]);			
 		}
-		
 	}
 }
 */
@@ -226,6 +220,7 @@ public class Solution {
 
 
 //말뚝
+/*
 public class Solution {
 
 	static int TC,N,Q,answer;
@@ -341,4 +336,5 @@ class M2D{
 		this.y = y;
 	}
 }
+*/
 
