@@ -98,6 +98,7 @@ s와 e는 도로 후보가 잇는 각 도시의 번호이고, c는 그 도로를
 
 	private static void union(int s, int e) {
 		// TODO Auto-generated method stub
+		
 		par[s] = e;
 	}
 
