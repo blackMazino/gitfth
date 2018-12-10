@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.StringTokenizer;
 
-public class Previous03_도로포장 {
+public class 그래프_MST_SdsPre03_도로포장 {
 /*
 (입력)
 2         ← 총 2개의 테스트 케이스가 있다는 뜻

@@ -161,15 +161,22 @@ sample input
 		
 		
 	}
-	public static int ccw(P2 a, P2 b, P2 c) {
-		long val = (long)(a.x*b.y) - (long)(b.x*a.y)
-		          +(long)(b.x*c.y) - (long)(c.x*b.y)
-		          +(long)(c.x*a.y) - (long)(a.x*c.y);
+//	public static int ccw(P2 a, P2 b, P2 c) {
+//		long val = (long)(a.x*b.y) - (long)(b.x*a.y)
+//		          +(long)(b.x*c.y) - (long)(c.x*b.y)
+//		          +(long)(c.x*a.y) - (long)(a.x*c.y);
+//		if(val>0) return 1;
+//		if(val<0) return -1;
+//		return 0;
+//	}
+	protected static int ccw(P2 a, P2 b, P2 c) {
+		long val = ((long)a.x*b.y - (long)b.x*a.y
+				  +(long)b.x*c.y - (long)c.x*b.y
+				  +(long)c.x*a.y - (long)a.x*c.y);
 		if(val>0) return 1;
 		if(val<0) return -1;
 		return 0;
 	}
-
 	
 
 }

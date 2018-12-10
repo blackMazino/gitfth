@@ -44,7 +44,7 @@ public class Practice27_MST {
 #10 65621
 
  */
-	static int TC, N;
+	static int TC, N;//2 ≤ N ≤ 300, edge : N-1
 	static int [] par;
 	static long X;
 	static ArrayList<Mst> list;
@@ -59,11 +59,11 @@ public class Practice27_MST {
 			N = Integer.parseInt(br.readLine());
 			for(int n=1;n<N;n++){
 				st = new StringTokenizer(br.readLine());
-				int s = Integer.parseInt(st.nextToken());
+//				int s = Integer.parseInt(st.nextToken());
 				int c = 0;				
 				for(int m=n+1;m<=N;m++){
 					c = Integer.parseInt(st.nextToken());
-					list.add(new Mst(s,m,c));
+					list.add(new Mst(n,m,c));
 				}
 			}
 			Collections.sort(list, new Comparator<Mst>(){
@@ -78,6 +78,7 @@ public class Practice27_MST {
 			par = new int[N+1];
 			for(int i=1;i<=N;i++) par[i]=i;
 			
+			int mstCnt = N-1;
 			for(Mst mst:list){
 				int s=find(mst.s);
 				int e=find(mst.e);
@@ -85,6 +86,7 @@ public class Practice27_MST {
 					union(s,e);
 					X +=mst.c;			
 					mst.mst = true;
+					mstCnt--;
 				}
 			}
 			

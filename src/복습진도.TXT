@@ -231,6 +231,27 @@ LCA, MST
 12/04
 도로포장
 
+12/5
+12/6
+
+12/7
+지하도시의친구들
+
+조상이키컸으면
+말뚝(기출)
+최대최소
+인터스텔라(dijkstra)
+인터스텔라워프(BellmanFord)
+
+
+12/8(시험일)
+
+12/10
+문제복기
+LIS
+LCS
+
+
 추가그래프중에 못푼것
 cowParty 이해를 못함..
 barbelSort -DP
@@ -249,6 +270,7 @@ dijkstra cowparty 이해하기
 //DAG X(cycle이 있을 수 있다), 음수가 없음 -> Dijkstra
 //DAG X(cycle이 있을 수 있다), 음수가 없음, 모든가중치가 동일 -> DFS,BFS
 
-도로포장
+
 지하동굴친구
 MST
+배제깡
