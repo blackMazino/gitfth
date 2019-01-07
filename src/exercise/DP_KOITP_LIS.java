@@ -24,7 +24,7 @@ https://koitp.org/problem/LONGEST_INCREASING_SUBSEQUENCE/read/
 4
  */
 	static int N, answer;
-	static int arr[],d[];//d[n] = n에서의 증가수열 길이
+	static int arr[],d[];//d[i] = i번째 인덱스의 증가수열, 답은 n의 최대값 +1
 	static T Tracking[];//트랙킹용
 	public static void main(String[] args) throws Exception {
 		BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
