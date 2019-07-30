@@ -1,4 +1,4 @@
-package class_swProblemSolving;
+package exercise;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-public class Day7_01_Geo_단순다각형의넓이 {
+public class 기하_CCW_KOITP_단순다각형의넓이 {
 /*
 문제
 이차원 평면에 점 N개로 이루어진 단순 다각형이 주어진다. 
@@ -35,7 +35,8 @@ public class Day7_01_Geo_단순다각형의넓이 {
 	
 	public static void main(String[] args) throws Exception, IOException {
 		// TODO Auto-generated method stub
-		
+//		System.out.println(Long.MAX_VALUE<Double.MAX_VALUE);
+//		System.out.println(Double.MAX_VALUE);
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
 //		TC = Integer.parseInt(br.readLine());
@@ -44,6 +45,8 @@ public class Day7_01_Geo_단순다각형의넓이 {
 			N = Integer.parseInt(st.nextToken());
 			//시작점에서 한방향(시계,반시계)으로 좌표가 주어지므로
 			//현재좌표, 직전좌표, 첫좌표 삼각형의 넓이는 계속 더해가면된다
+			
+			//한방향으로 주어지지 않았다면 정렬 해야함(convexHull에서 정렬(stack쌓기전)
 			a = new LinkedList<>();
 			long ans = 0;
 			for(int i=0;i<N;i++){
@@ -73,6 +76,10 @@ public class Day7_01_Geo_단순다각형의넓이 {
 //		}
 		br.close();
 	}
+	/* p1.x  p2.x  p3.x
+	 * p1.y  p2.y  p3.y
+	 * 
+	 */
     static long ccw(p2D p1, p2D p2, p2D p3) {
         long tmp = p1.x * p2.y + p2.x * p3.y + p3.x * p1.y;
         tmp -= (p1.y * p2.x + p2.y * p3.x + p3.y * p1.x);

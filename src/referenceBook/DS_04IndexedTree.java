@@ -72,7 +72,7 @@ public class DS_04IndexedTree {
 						tree[x]=Math.min(tree[x*2], tree[x*2+1]);
 						x/=2;
 					}
-				}else{//구간합
+				}else{//구간의 최소값
 					int min = 2000000000;//2billions
 					x+=tmpN-1; y+=tmpN-1;
 					while(x<=y){

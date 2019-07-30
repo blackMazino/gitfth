@@ -114,7 +114,7 @@ public class 그래프_BellmanFord_Sds사전201710_인터스텔라워프 {
         d[0] = 0;
         for(int i=1;i<tN;i++){
             for(Way w : pathlist){
-                if(d[w.sIdx]<Integer.MAX_VALUE){
+                if(d[w.sIdx]<Long.MAX_VALUE){
                     if(d[w.eIdx]>d[w.sIdx]+w.c){
                         d[w.eIdx]=d[w.sIdx]+w.c;
                         if(i==tN-1){

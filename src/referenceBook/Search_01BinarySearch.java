@@ -18,7 +18,7 @@ public class Search_01BinarySearch {
   * 
   * 
   * 출력
-  * #1 -1 3 -1 9 -1
+  * #1 -1 3(4?) -1 9 -1
   * #2  0 6 -1 8 14
   * 
   * */

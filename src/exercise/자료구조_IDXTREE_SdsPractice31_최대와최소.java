@@ -62,6 +62,7 @@ public class 자료구조_IDXTREE_SdsPractice31_최대와최소 {
 			
 			//IndexedTree
 			for(tn=1;tn<N;tn=tn+2);//tn = N+1
+//			System.out.println(tn);
 			minTree = new long [212121];			
 			Arrays.fill(minTree, Long.MAX_VALUE);			
 			maxTree = new long [212121];

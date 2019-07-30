@@ -74,6 +74,7 @@ Ai 에서 Bi 로 가는데 Ti 시간이 소요된다는 것이다.
 
         long answer = 0;
         for(int i=1;i<=N;i++){       
+        	System.out.println(d1[i]+","+d2[i]);
         	answer = Math.max(answer, d1[i]+d2[i]);
         }
         
